@@ -1,14 +1,19 @@
 import React from "react";
-import { BrowserRouter, Switch, Route } from "react-router-dom";
+import { BrowserRouter, Route } from "react-router-dom";
+import Home from "./Routes/HomeScreen";
+import PrivateRoute from "./Components/PrivateRoute";
 
 function App() {
-  console.log(process.env.REACT_APP_PASSWORD)
-  return (
-    <div className="App">
-      <header className="App-header">
-      </header>
-    </div>
-  );
+	return (
+		<BrowserRouter>
+			<Route exact path="/" component={Home} />
+			{/* <PublicRoute exact path="/login" component={Login} />
+			<PrivateRoute exact path="/dashboard" component={Dashboard} />
+			<PrivateRoute exact path="/resume" component={Resume} />
+			<PrivateRoute exact path="/settings" component={Settings} />
+			<PrivateRoute exact path="/logout" component={Logout} /> */}
+		</BrowserRouter>
+	);
 }
 
 export default App;
