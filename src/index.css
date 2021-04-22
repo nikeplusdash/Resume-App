@@ -113,6 +113,24 @@
   font-style: normal;
 }
 
+:root {
+  --padding-elem: 8px 16px 5px 16px;
+  --gradient1-45: linear-gradient(-45deg,#FF0C0C,#FF9DC1);
+  --gradient2-45: linear-gradient(-45deg,#8E40FF,#00BAFF);
+  --gradient3-45: linear-gradient(-45deg,#5B00D8,#FF8DFF);
+  --gradient4-45: linear-gradient(-45deg,#FF3C76,#FF6C51,#FFC12A);
+  --gradient1-90: linear-gradient(90deg,#FF0C0C,#FF9DC1);
+  --gradient2-90: linear-gradient(90deg,#8E40FF,#00BAFF);
+  --gradient3-90: linear-gradient(90deg,#5B00D8,#FF8DFF);
+  --gradient4-90: linear-gradient(90deg,#FF3C76,#FF6C51,#FFC12A);
+  --highlight-color: #FFBE2B;
+  --alert-color: #F55B5B;
+  --button-color1: #911AE5;
+  --enabled-color: #808080;
+  --disabled-color: #D1D1D1;
+  --shadow-offset: 0 13.6px  16px 0 #00000012;
+}
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Acumin-Pro', 'Arial', 'Segoe UI', 'Roboto', 'Oxygen',
