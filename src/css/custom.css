@@ -1,0 +1,75 @@
+* {
+    -webkit-user-select: none;
+    -moz-user-select: moz-none;
+    -ms-user-select: none;
+    user-select: none;   
+    scrollbar-color: var(--alert-color) #ffffff;
+    scrollbar-width: thin;
+}
+
+body {
+    cursor: none;
+    /* cursor: url('https://i.imgur.com/6wmyrkK.gif'),auto; */
+}
+
+body::-webkit-scrollbar-track
+{
+	border-radius: 4px;
+	background-color: #ffffff;
+}
+
+body::-webkit-scrollbar
+{
+	width: 7px;
+	background-color: #F5F5F5;
+}
+
+body::-webkit-scrollbar-thumb
+{
+	border-radius: 10px;
+	background-color: var(--alert-color);
+}
+
+#cursor::before {
+    content: '';
+    display: flex;
+    width: 37px;
+    height: 37px;
+    position: relative;
+    top: 1.5px;
+    left: 1.5px;
+    background: white;
+    filter: blur(10px);
+    opacity: 0.5;
+    border-radius: 50%;
+}
+
+#cursor {
+    position: absolute;
+    pointer-events: none;
+    z-index: 1;
+    width: 45px;
+    height: 45px;
+    transform: scale(0.9);
+    border: 3px solid rgba(0, 0, 0, 0.24);
+    transition: 50ms;
+    border-radius: 50%;
+    transition: 10ms ease-in;
+    transform: translate(-40%,-40%);
+    display: inline-grid;
+    place-content: center;
+    top: 50%;
+    left: 50%;
+}
+
+#cursor::after {
+    content: '';
+    display: flex;
+    width: 40px;
+    height: 40px;
+    position: absolute;
+    top: 2.5px;
+    left: 2.5px;
+    background: rgba(255, 255, 255, 0.24);
+    border-radius: 50%;
+}

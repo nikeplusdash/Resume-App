@@ -1,0 +1,9 @@
+.resume {
+    width: 85%;
+    height: 0;
+    padding-top: calc(2144 / 1516 * 100%);
+    background: rgb(255, 255, 255);
+    position: relative;
+    margin: -35% auto 5% auto;
+    box-shadow: var(--shadow-offset);
+}

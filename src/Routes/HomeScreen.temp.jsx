@@ -1,4 +1,5 @@
 import React from "react";
+import Custom from "../Components/Custom";
 import image from '../logowt.svg';
 import '../css/home.css'
 
@@ -10,6 +11,7 @@ class Home extends React.Component {
     render() {
         return (
             <div className="container">
+                <Custom />
                 <div className="nav">
                     <div className="wrap-nobg"><div className="i1">Login</div></div>
                     <div className="wrap-bg"><div className="i2">Register</div></div>
@@ -28,7 +30,7 @@ class Home extends React.Component {
                         </div>
                         <div className="theme g3">
                             <div className="color c3" />
-                            <div className="txt t3">Cherry Red</div>
+                            <div className="txt t3">Mirror White</div>
                         </div>
                     </div>
                     <div className="resume"></div>

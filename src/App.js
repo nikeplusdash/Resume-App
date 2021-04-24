@@ -1,7 +1,7 @@
-import React from "react";
-import { BrowserRouter, Route } from "react-router-dom";
-import Home from "./Routes/HomeScreen";
-import PrivateRoute from "./Components/PrivateRoute";
+import React from "react"
+import { BrowserRouter, Route } from "react-router-dom"
+import Home from "./Routes/HomeScreen"
+import PrivateRoute from "./Routes/PrivateRoute"
 
 function App() {
 	return (
@@ -13,7 +13,7 @@ function App() {
 			<PrivateRoute exact path="/settings" component={Settings} />
 			<PrivateRoute exact path="/logout" component={Logout} /> */}
 		</BrowserRouter>
-	);
+	)
 }
 
-export default App;
+export default App

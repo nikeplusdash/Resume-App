@@ -1,6 +1,6 @@
-import React from 'react';
-import { Route, Redirect } from 'react-router-dom';
-import { getToken} from './utils';
+import React from 'react'
+import { Route, Redirect } from 'react-router-dom'
+import { getToken} from '../Components/utils'
 
 const PublicRoute = ({ component: Component, ...rest }) => {
     
@@ -13,7 +13,7 @@ const PublicRoute = ({ component: Component, ...rest }) => {
             )
         }
         />
-    );
-};
+    )
+}
 
-export default PublicRoute;
+export default PublicRoute

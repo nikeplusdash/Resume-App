@@ -1,0 +1,110 @@
+.control {
+    width:250px;
+    height: 100px;
+    position: absolute;
+    top: 0;
+    left: calc(50% - 125px);
+    border-radius: 13px;
+    background-color: rgba(255, 255, 255, 0.9);
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    box-shadow: var(--shadow-offset);
+}
+
+.theme {
+    display: flex;
+    flex-direction: column;
+    align-self: center;
+    /* background-color: rgba(0, 255, 255, 0.397); */
+    margin: 4px;
+}
+
+.color {
+    width: 65px;
+    height: 65px;
+    margin: 5px;
+    border-radius: 8px;
+}
+
+.color:hover {
+    animation: bubble 200ms ease-in 1 normal forwards;
+}
+
+.color:hover::after {
+    content: '';
+    margin: auto;
+    display: flex;
+    position: relative;
+    bottom: 75%;
+    width: 50%;
+    height: 50%;
+    border-radius: 15px;
+    background: white;
+    transform: scale(0.7);
+    animation: grow-up 150ms cubic-bezier(0.38, 0.04, 0.29, 1.01) 1 normal forwards;
+}
+
+.color::before {
+    content: '';
+    display: block;
+    width: 100%;
+    height: 100%;
+    background: inherit;
+    transform: scale(1);
+    filter: blur(15px);
+    opacity: 0.7;
+}
+
+.after::before {
+    content: '';
+    display: block;
+    width: 100%;
+    height: 100%;
+    background: inherit;
+    transform: scale(1);
+    filter: blur(15px);
+    opacity: 0.7;
+}
+
+.after {
+    width: 65px;
+    height: 65px;
+    margin: 5px;
+    border-radius: 8px;
+}
+
+.after::after {
+    content: '';
+    margin: auto;
+    display: flex;
+    position: relative;
+    bottom: 75%;
+    width: 50%;
+    height: 50%;
+    border-radius: 15px;
+    background: white;
+    transform: scale(0.7);
+}
+
+.txt {
+    font-family: Bebas Neue;
+    font-weight: normal;
+    font-size: 10pt;
+    user-select: none;
+}
+
+@keyframes bubble {
+    to {
+        transform: perspective(500px) translate3d(0,0,30px) rotate3d(1,0,0,15deg);
+    }
+}
+
+@keyframes grow-up {
+    from {
+        transform: scale(0);
+    }
+    to {
+        transform: scale(0.7);
+    }
+}
