@@ -28,8 +28,8 @@ body {
 
 .wrap-bg,.wrap-nobg {
     padding: 3px;
+    margin-right: 40px;
     font-size: 0.9em;
-    margin-right: 3.5%;
     background: var(--gradient3-90);
     border-radius: 50px;
 }
@@ -111,6 +111,7 @@ body {
 
 .btn-bD {
     border: none;
+    cursor: pointer;
     display: inline-block;
     font-family: 'Bebas Neue';font-weight: bold;font-size: 0.55em;color:white;
     padding: 8px 25px 5px 25px;

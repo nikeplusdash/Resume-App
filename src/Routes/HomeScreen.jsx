@@ -1,5 +1,5 @@
 import React from "react"
-import { Link} from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import image from '../logowt.svg'
 import { DesignPalette } from '../Components/utils'
 import convert from 'color-convert'
@@ -57,8 +57,8 @@ class Home extends React.Component {
         let doc = (
             <div className="container">
                 <div className="nav">
-                    <div className="wrap-nobg"><div className="i1">Login</div></div>
-                    <div className="wrap-bg"><div className="i2">Register</div></div>
+                    <Link to={{ pathname: '/login', origin: '1' }}><div className="wrap-bg"><div className="i2">Register</div></div></Link>
+                    <Link to={{ pathname: '/login', origin: '0' }}><div className="wrap-nobg"><div className="i1">Login</div></div></Link>
                 </div>
                 <div className="logo-img" draggable={false}>
                     <img src={image} alt="logo" />
@@ -96,7 +96,7 @@ class Home extends React.Component {
                     </div>
                 </div>
                 <div className="footLogo">Developed with
-                 <svg className="footImg" width="100%" height="100%" viewBox="0 0 144 125" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" xmlSpace="preserve" xmlnsSerif="http://www.serif.com/" style={{ fillRule:"evenodd",clipRule:"evenodd",strokeLineJoin:"round",strokeMiterLimit:2 }}><path d="M72.081,21.502c15.025,-25.669 45.075,-25.669 60.101,-12.834c15.026,12.834 15.026,38.504 -0,64.174c-10.518,19.252 -37.563,38.504 -60.101,51.339c-22.538,-12.835 -49.584,-32.087 -60.102,-51.339c-15.025,-25.67 -15.025,-51.34 0,-64.174c15.026,-12.835 45.076,-12.835 60.102,12.834Z" style={{ fill:"#b20021" }}/></svg>
+                 <svg className="footImg" width="100%" height="100%" viewBox="0 0 144 125" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" xmlSpace="preserve" xmlnsSerif="http://www.serif.com/" style={{ fillRule: "evenodd", clipRule: "evenodd", strokeLineJoin: "round", strokeMiterLimit: 2 }}><path d="M72.081,21.502c15.025,-25.669 45.075,-25.669 60.101,-12.834c15.026,12.834 15.026,38.504 -0,64.174c-10.518,19.252 -37.563,38.504 -60.101,51.339c-22.538,-12.835 -49.584,-32.087 -60.102,-51.339c-15.025,-25.67 -15.025,-51.34 0,-64.174c15.026,-12.835 45.076,-12.835 60.102,12.834Z" style={{ fill: "#b20021" }} /></svg>
                  by <div className="footText">ANS</div></div>
             </div>
         )
