@@ -3,17 +3,39 @@ const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const client = db.client;
 
+exports.valid = (req, res) => {
+
+    setTimeout(() => {
+        client.findOne({ where: { id: req.body.id } })
+        .then(v => {
+            if (v) res.send({ code: 402, message: "User already exists" })
+            else {
+                // send OTP to emailID
+                res.send({ code: 200, message: "Valid Id" })
+            }
+        })
+        .catch(err => res.status(500).send(err))
+    },10)
+
+}
+
 exports.signup = (req, res) => {
-    client.create({
-        id: req.body.email,
+    let user = {
+        id: req.body.id,
+        pwd: bcrypt.hashSync(req.body.pwd, 8),
         fname: req.body.fname,
-        lname: req.body.lname,
-        pwd: bcrypt.hashSync(req.body.pwd, 8)
-    })
-        .then(user => res.status(200).send({ message: "Registered the user" }))
-        .catch(err => {
-            res.status(500).send({ message: err.message });
-        });
+        lname: req.body.lname
+    }
+    // client.create({
+    //     id: req.body.email,
+    //     fname: req.body.fname,
+    //     lname: req.body.lname,
+    //     pwd: bcrypt.hashSync(req.body.pwd, 8)
+    // })
+    //     .then(user => res.status(200).send({ message: "Registered the user" }))
+    //     .catch(err => {
+    //         res.status(500).send({ message: err.message });
+    //     });
 }
 
 exports.login = (req, res) => {

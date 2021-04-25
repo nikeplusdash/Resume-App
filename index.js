@@ -19,10 +19,12 @@ app.get('/api', (req, res) => {
 	res.json({ message: 'Welcome to PopResume! You should not be here' })
 });
 
+app.post('/api/verify',util.valid);
+
 app.post('/api/login',util.login);
 
 app.post('/api/register',util.signup);
 
 app.listen(port, () => {
-	console.log(`Example app listening at http://localhost:${port}`)
+	console.log(`Example app listening at http://localhost:${port}/api`)
 })
