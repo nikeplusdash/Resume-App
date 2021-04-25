@@ -6,12 +6,29 @@ class Resume extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            theme: props.themeVal
+            theme: props.themeVal,
+            image: {
+                isImage: false,
+                imageURL: ''
+            },
+            fname: '',
+            lname: '',
+            position: '',
+            description: '',
+            content: {
+                sections: [
+                    {
+                        type: '',
+                        title: '',
+
+                    }
+                ]
+            }
         }
     }
     render() {
         return (
-            <div className="resume">
+            <div className="resume" style={{ marginTop: (this.props.referrer === 'home'?"-35%":"5%") }}>
             </div>
         )
     }

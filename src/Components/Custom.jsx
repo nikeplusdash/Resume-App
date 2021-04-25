@@ -43,7 +43,10 @@ class Custom extends React.Component {
     }
     render() {
         return (
-            <div id="cursor"></div>
+            <div id="body">
+                <div id="cursor" />
+                {this.props.document}
+            </div>
         )
     }
 }

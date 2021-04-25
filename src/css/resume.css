@@ -2,8 +2,11 @@
     width: 85%;
     height: 0;
     padding-top: calc(2144 / 1516 * 100%);
-    background: rgb(255, 255, 255);
+    background: white;
     position: relative;
-    margin: -35% auto 5% auto;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 5%;
+    color: black;
     box-shadow: var(--shadow-offset);
 }

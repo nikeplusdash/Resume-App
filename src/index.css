@@ -79,13 +79,13 @@
 @font-face {
   font-family: 'Bebas Neue';
   src: url(./fonts/BEBASNEUE\ BOOK.OTF) format("opentype");
-  font-weight: bold;
+  font-weight: lighter;
   font-style: normal;
 }
 @font-face {
   font-family: 'Bebas Neue';
   src: url(./fonts/BEBASNEUE\ BOLD.OTF) format("opentype");
-  font-weight: bolder;
+  font-weight: bold;
   font-style: normal;
 }
 @font-face {
@@ -129,6 +129,7 @@
   --gradient6-90: linear-gradient(90deg,#6FFFD8,#D5FFA3);  
   --highlight-color: #FFBE2B;
   --alert-color: #F55B5B;
+  --hot-color: #B20021;
   --button-color1: #911AE5;
   --enabled-color: #808080;
   --disabled-color: #D1D1D1;
