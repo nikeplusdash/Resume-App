@@ -1,0 +1,255 @@
+.logScreen {
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(120deg,#5B00D8,#FF8DFF);
+}
+
+#waves {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+.componentContainLog {
+    z-index: 1;
+    width: 50vw;
+    height: 75vh;
+    display: flex;
+    border-radius: 15px;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(2.4px);
+    box-shadow: 2px 2px 4px 0 rgba(0, 0, 0, 0.03);
+}
+
+.bar1 {
+    display: flex;
+    position: relative;
+    flex-direction: column;justify-content: space-evenly;
+    width: 40%;
+    background: white;
+    border-radius: 15px;
+    padding: 10px 20px;
+}
+
+.loginLogo {
+    width: 60%;
+    margin: 15px auto 15px auto;
+}
+
+.containerLogin {
+    width: 85%;
+    height: 100%;
+    display: flex;
+    /* justify-content: center; */
+    /* align-items: center;   */
+    margin: auto;
+}
+
+form {
+    width: 100%;
+}
+
+.swipeOut {
+    animation: fadeOut 500ms ease-in forwards;
+}
+
+.fadeIn {
+    opacity: 0.1;
+    animation: fadeIn ease-in 500ms forwards;
+}
+
+.field {
+    width: 100%;
+    height: 50px;
+    margin: 7px 0;
+    display: flex;
+    position: relative;
+    transition: all 500ms;
+    box-sizing: border-box;
+}
+
+.field .logInp {
+    position: relative;
+    width: 100%;
+    height: 35px;
+    padding-left: 15px;
+    padding-right: 20px;
+    margin-top: auto;
+    margin-bottom: auto;
+    background: transparent;
+    border: 2.5px solid var(--enabled-color);
+    outline: none;
+    border-radius: 4px;
+}
+
+.field .logSub {
+    position: relative;
+    width: 100%;
+    height: 35px;
+    background: var(--button-color1);
+    border-radius: 4px;
+    margin: auto;
+    color: white;
+    transition: 100ms all ease;
+    display: flex;
+    justify-content: center;align-items: center;
+    font-size: 1.2em;
+    font-family: 'Bebas Neue Bold';
+    cursor: pointer;
+    outline: none;
+    border: none;
+}
+
+.field .logSub:hover:enabled {
+    transform: translateY(-1.5px);
+    box-shadow: var(--shadow-offset);
+}
+
+.field .logSub:active:enabled {
+    transform: translateY(1.5px);
+    background: #6a13a8;
+}
+
+.field .logSub:disabled {
+    background: #a874ce;
+}
+
+.field span {
+    position: absolute;
+    top: 30%;
+    left: 15px;
+    padding: 0 7px 0 5px;
+    font-family: 'Bebas Neue Regular';color: black;
+    transition: all 200ms;
+    pointer-events: none;
+}
+
+.field .logInp:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0px 1000px #ffffff inset !important;
+}
+
+input:internal-autofill-selected {
+    color: var(--disabled-color)
+}
+
+.field .logInp:disabled {
+    color: var(--disabled-color) !important;
+    border-color: var(--disabled-color);  
+}
+
+.field .logInp:focus, .focus .logInp:active {
+    border: 2.5px solid var(--highlight-color);
+}
+
+.field .logInp:focus ~ span, .field .logInp:active ~ span {
+    transform: translate(-10px,-20px);
+    background: white;
+    color: var(--highlight-color);font-size: 0.9em;
+}
+
+.field .logInp:valid ~ span {
+    transform: translate(-10px,-20px);
+    background: white;
+    color: black;font-size: 0.9em;
+}
+
+.field .logInp:disabled ~ span  {
+    transform: translate(-10px,-20px);
+    background: white;
+    color: var(--disabled-color);font-size: 0.9em;
+}
+
+.radioLog {
+    position: relative;
+    border: 0px;
+    width: 7%;
+    height: 2em;
+    outline: none;
+    margin: auto 7px auto 7px;
+}
+
+#radioF {
+    display: block;
+    display: flex;
+    align-self: center;
+    margin: auto;
+    position: relative;
+    font-family: 'Bebas Neue Regular';color: black;
+}
+
+.switcher {
+    width: 50px;
+    height: 50px;
+    background: white;
+    border-radius: 50%;
+    transition: all 1s ease-in;
+    position: absolute;
+    box-shadow: var(--shadow-offset);
+    z-index: 1;
+    cursor: pointer;
+}
+
+.regMode {
+    top: -25px;
+    left: -25px;
+}
+
+.loginMode {
+    bottom: -25px;
+    right: -25px;
+}
+
+.hmm {
+    display: block;
+    width: 40px;
+    position: absolute;
+    top: 7.5px;
+    left: 5px;
+}
+
+.shake {
+    animation: shake 600ms cubic-bezier(0.62, 0.02, 0.32, 0.99);
+}
+
+@keyframes shake {
+    20% {
+        transform: translateX(20px);
+        border-color: var(--alert-color);
+    }
+    40% {
+        transform: translateX(-17px);
+    }
+    60% {
+        transform: translateX(5px);
+    }
+    80% {
+        transform: translateX(-2px);
+        border-color: var(--alert-color);
+    }
+}
+
+@keyframes fadeOut {
+    0% {
+        opacity: 1
+    }
+    50% {
+        opacity: 0.3;
+    }
+    100% {
+        opacity: 0.01;
+        transform: translateX(-70%);
+    }
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0.1;
+        transform: translateX(130%);
+    }
+    100% {
+        opacity: 1;
+    }
+}

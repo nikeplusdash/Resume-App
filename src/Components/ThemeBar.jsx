@@ -6,7 +6,7 @@ class ThemeBar extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            theme: props.init,
+            theme: props.init
         }
         this.theme = this.theme.bind(this)
     }

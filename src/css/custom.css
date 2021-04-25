@@ -1,8 +1,4 @@
 * {
-    -webkit-user-select: none;
-    -moz-user-select: moz-none;
-    -ms-user-select: none;
-    user-select: none;   
     scrollbar-color: var(--alert-color) #ffffff;
     scrollbar-width: thin;
 }
@@ -27,6 +23,10 @@
 
 
 #body {
+    -webkit-user-select: none;
+    -moz-user-select: moz-none;
+    -ms-user-select: none;
+    user-select: none;   
     cursor: none;
     /* cursor: url('https://i.imgur.com/6wmyrkK.gif'),auto; */
 }

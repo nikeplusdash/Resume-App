@@ -130,7 +130,7 @@ body {
     box-shadow: inset 0 0 12px 0 rgba(0, 0, 0, 0.2);
     display: flex;
     transition: all 500ms;
-    flex-direction: row;justify-content: space-between;align-items:center;flex-shrink: 0;font-size: 9.5vh
+    flex-direction: row;justify-content: space-between;align-items:center;flex-shrink: 0;font-size: 9.5vh;
 }
 
 .boxDb {
@@ -162,7 +162,7 @@ body {
     opacity: 0.01;
     transform-origin: 50% 50%;
     transition: all 300ms ease-in;
-    align-items: center;justify-content: end;
+    align-items: center;justify-content: flex-end;
     font-family: Boltzz;font-size: 0.1pt;color: black;
 }
 

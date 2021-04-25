@@ -71,21 +71,21 @@
   font-style: normal;
 }
 @font-face {
-  font-family: 'Bebas Neue';
+  font-family: 'Bebas Neue Regular';
   src: url(./fonts/BEBASNEUE\ REGULAR.OTF) format("opentype");
   font-weight: normal;
   font-style: normal;
 }
 @font-face {
-  font-family: 'Bebas Neue';
+  font-family: 'Bebas Neue Book';
   src: url(./fonts/BEBASNEUE\ BOOK.OTF) format("opentype");
-  font-weight: lighter;
+  font-weight: normal;
   font-style: normal;
 }
 @font-face {
-  font-family: 'Bebas Neue';
+  font-family: 'Bebas Neue Bold';
   src: url(./fonts/BEBASNEUE\ BOLD.OTF) format("opentype");
-  font-weight: bold;
+  font-weight: normal;
   font-style: normal;
 }
 @font-face {
