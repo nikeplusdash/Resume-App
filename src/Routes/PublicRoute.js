@@ -1,18 +1,32 @@
 import React from 'react'
 import { Route, Redirect } from 'react-router-dom'
-import { getToken} from '../Components/utils'
+import { verifyUser} from '../Components/utils'
 
-const PublicRoute = ({ component: Component, ...rest }) => {
-    return (
-        <Route {...rest} render={props =>
-            getToken() != null ? (
-                <Redirect to='/dashboard' />
-            ) : (
-                <Component {...props} />
-            )
+class PublicRoute extends React.Component {
+    state = {
+        loading: true,
+        isAuthenticated: false,
+    }
+    async componentDidMount() {
+        verifyUser().then((isAuthenticated) => {
+            this.setState({
+                loading: false,
+                isAuthenticated: isAuthenticated,
+            });
+        });
+    }
+    render() {
+        const { component: Component, ...rest } = this.props;
+        if (this.state.loading) {
+            return <div>LOADING</div>;
         }
-        />
-    )
+        else return (
+            <Route {...rest} render={props =>
+                this.state.isAuthenticated?<Redirect to={{ pathname:'/Dashboard' }} />:<Component {...this.props} />
+            }
+            />
+        )
+    }
 }
 
 export default PublicRoute

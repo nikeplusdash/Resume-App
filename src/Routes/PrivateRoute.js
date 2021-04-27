@@ -1,43 +1,37 @@
 import React, { useState } from 'react'
 import { Route, Redirect } from 'react-router-dom'
-import { getToken, restoreSession } from '../Components/utils'
+import { getUser, restoreUser, verifyUser } from '../Components/utils'
 import jwtDecode from 'jwt-decode'
 
-const PrivateRoute = ({ component: Component, ...rest }) => {
-    const [isAuthenticated, setIsAuthenticated] = useState(null)
-    let token = getToken()
-    if (token) {
-        let tokenExpiration = jwtDecode(token).exp
-        let dateNow = new Date()
-        if (tokenExpiration < dateNow.getTime() / 1000) {
-            try {
-                restoreSession()
-                setIsAuthenticated(true)
-            }
-            catch { 
-                setIsAuthenticated(false)
-            }
-        } else {
-            setIsAuthenticated(true)
-        }
-    } else {
-        setIsAuthenticated(false)
+class PrivateRoute extends React.Component {
+    state = {
+        loading: true,
+        isAuthenticated: false,
     }
-
-    if (isAuthenticated === null) {
-        return <></>
+    componentDidMount() {
+        verifyUser().then((isAuthenticated) => {
+            this.setState({
+                loading: false,
+                isAuthenticated,
+            });
+        });
     }
-
-    return (
-        <Route {...rest} render={props =>
-            !isAuthenticated ? (
-                <Redirect to='/home' />
-            ) : (
-                <Component {...props} />
-            )
+    render() {
+        const { component: Component, ...rest } = this.props;
+        if (this.state.loading) {
+            return <div>LOADING</div>;
         }
-        />
-    )
+        else return (
+            <Route {...rest} render={props =>
+                this.state.isAuthenticated ? (
+                    <Component {...this.props} />
+                ) : (
+                    <Redirect to={{ pathname: '/', state: { from: props.location } }} />
+                )
+            }
+            />
+        )
+    }
 }
 
 export default PrivateRoute

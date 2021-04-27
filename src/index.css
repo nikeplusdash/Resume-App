@@ -1,154 +1,202 @@
 @font-face {
-  font-family: 'Acumin-Pro';
-  src: url(./fonts/ACUMINPRO-REGULAR.OTF) format("opentype");
-  font-weight: normal;
-  font-style: normal;
+	font-family: 'Acumin-Pro';
+	src: url(./fonts/ACUMINPRO-REGULAR.OTF) format("opentype");
+	font-weight: normal;
+	font-style: normal;
 }
 @font-face {
-  font-family: 'Acumin-Pro';
-  src: url(./fonts/ACUMINPRO-MEDIUM.OTF) format("opentype");
-  font-weight: medium;
-  font-style: normal;
+	font-family: 'Acumin-Pro';
+	src: url(./fonts/ACUMINPRO-MEDIUM.OTF) format("opentype");
+	font-weight: medium;
+	font-style: normal;
 }
 @font-face {
-  font-family: 'Acumin-Pro';
-  src: url(./fonts/ACUMINPRO-BOLD.OTF) format("opentype");
-  font-weight: bold;
-  font-style: normal;
+	font-family: 'Acumin-Pro';
+	src: url(./fonts/ACUMINPRO-BOLD.OTF) format("opentype");
+	font-weight: bold;
+	font-style: normal;
 }
 @font-face {
-  font-family: 'Acumin-Pro';
-  src: url(./fonts/ACUMINPRO-ITALIC.OTF) format("opentype");
-  font-weight: normal;
-  font-style: italic;
+	font-family: 'Acumin-Pro';
+	src: url(./fonts/ACUMINPRO-ITALIC.OTF) format("opentype");
+	font-weight: normal;
+	font-style: italic;
 }
 @font-face {
-  font-family: 'Acumin-Pro';
-  src: url(./fonts/ACUMINPRO-BLACKITALIC.OTF) format("opentype");
-  font-weight: bolder;
-  font-style: italic;
+	font-family: 'Acumin-Pro';
+	src: url(./fonts/ACUMINPRO-BLACKITALIC.OTF) format("opentype");
+	font-weight: bolder;
+	font-style: italic;
 }
 @font-face {
-  font-family: 'Acumin-Pro';
-  src: url(./fonts/ACUMINPRO-BOLDITALIC.OTF) format("opentype");
-  font-weight: bold;
-  font-style: italic;
+	font-family: 'Acumin-Pro';
+	src: url(./fonts/ACUMINPRO-BOLDITALIC.OTF) format("opentype");
+	font-weight: bold;
+	font-style: italic;
 }
 @font-face {
-  font-family: 'Acumin-Pro';
-  src: url(./fonts/ACUMINPRO-BOLDITALIC.OTF) format("opentype");
-  font-weight: bold;
-  font-style: italic;
+	font-family: 'Acumin-Pro';
+	src: url(./fonts/ACUMINPRO-BOLDITALIC.OTF) format("opentype");
+	font-weight: bold;
+	font-style: italic;
 }
 @font-face {
-  font-family: 'Acumin-Pro';
-  src: url(./fonts/ACUMINPRO-LIGHTITALIC.OTF) format("opentype");
-  font-weight: lighter;
-  font-style: italic;
+	font-family: 'Acumin-Pro';
+	src: url(./fonts/ACUMINPRO-LIGHTITALIC.OTF) format("opentype");
+	font-weight: lighter;
+	font-style: italic;
 }
 @font-face {
-  font-family: 'Acumin-Pro Semibold';
-  src: url(./fonts/ACUMINPRO-SEMIBOLD.OTF) format("opentype");
-  font-weight: normal;
-  font-style: normal;
+	font-family: 'Acumin-Pro Semibold';
+	src: url(./fonts/ACUMINPRO-SEMIBOLD.OTF) format("opentype");
+	font-weight: normal;
+	font-style: normal;
 }
 @font-face {
-  font-family: 'Acumin-Pro Semibold';
-  src: url(./fonts/ACUMINPRO-SEMIBOLDITALIC.OTF) format("opentype");
-  font-weight: normal;
-  font-style: italic;
+	font-family: 'Acumin-Pro Semibold';
+	src: url(./fonts/ACUMINPRO-SEMIBOLDITALIC.OTF) format("opentype");
+	font-weight: normal;
+	font-style: italic;
 }
 @font-face {
-  font-family: 'American Captain';
-  src: url(./fonts/AMERICAN\ CAPTAIN.TTF) format("truetype");
-  font-weight: normal;
-  font-style: normal;
+	font-family: 'American Captain';
+	src: url(./fonts/AMERICAN\ CAPTAIN.TTF) format("truetype");
+	font-weight: normal;
+	font-style: normal;
 }
 @font-face {
-  font-family: 'Bauer Bodoni Std';
-  src: url(./fonts/BAUERBODONISTD-BLACKITALIC.OTF) format("opentype");
-  font-weight: normal;
-  font-style: normal;
+	font-family: 'Bauer Bodoni Std';
+	src: url(./fonts/BAUERBODONISTD-BLACKITALIC.OTF) format("opentype");
+	font-weight: normal;
+	font-style: normal;
 }
 @font-face {
-  font-family: 'Bebas Neue Regular';
-  src: url(./fonts/BEBASNEUE\ REGULAR.OTF) format("opentype");
-  font-weight: normal;
-  font-style: normal;
+	font-family: 'Bebas Neue Regular';
+	src: url(./fonts/BEBASNEUE\ REGULAR.OTF) format("opentype");
+	font-weight: normal;
+	font-style: normal;
 }
 @font-face {
-  font-family: 'Bebas Neue Book';
-  src: url(./fonts/BEBASNEUE\ BOOK.OTF) format("opentype");
-  font-weight: normal;
-  font-style: normal;
+	font-family: 'Bebas Neue Book';
+	src: url(./fonts/BEBASNEUE\ BOOK.OTF) format("opentype");
+	font-weight: normal;
+	font-style: normal;
 }
 @font-face {
-  font-family: 'Bebas Neue Bold';
-  src: url(./fonts/BEBASNEUE\ BOLD.OTF) format("opentype");
-  font-weight: normal;
-  font-style: normal;
+	font-family: 'Bebas Neue Bold';
+	src: url(./fonts/BEBASNEUE\ BOLD.OTF) format("opentype");
+	font-weight: normal;
+	font-style: normal;
 }
 @font-face {
-  font-family: 'Boltzz';
-  src: url(./fonts/BOLTZZ\ SANS.TTF) format("truetype");
-  font-weight: normal;
-  font-style: normal;
+	font-family: 'Boltzz';
+	src: url(./fonts/BOLTZZ\ SANS.TTF) format("truetype");
+	font-weight: normal;
+	font-style: normal;
 }
 @font-face {
-  font-family: 'Clint Marker';
-  src: url(./fonts/CLINT\ MARKER.TTF) format("truetype");
-  font-weight: normal;
-  font-style: normal;
+	font-family: 'Clint Marker';
+	src: url(./fonts/CLINT\ MARKER.TTF) format("truetype");
+	font-weight: normal;
+	font-style: normal;
 }
 @font-face {
-  font-family: 'Coolvetica';
-  src: url(./fonts/COOLVETICA\ RG.TTF) format("opentype");
-  font-weight: normal;
-  font-style: normal;
+	font-family: 'Coolvetica';
+	src: url(./fonts/COOLVETICA\ RG.TTF) format("opentype");
+	font-weight: normal;
+	font-style: normal;
 }
 @font-face {
-  font-family: 'Letrista Script';
-  src: url(./fonts/LETRISTASCRIPT.OTF) format("opentype");
-  font-weight: normal;
-  font-style: normal;
+	font-family: 'Letrista Script';
+	src: url(./fonts/LETRISTASCRIPT.OTF) format("opentype");
+	font-weight: normal;
+	font-style: normal;
 }
 
 :root {
-  --padding-elem: 8px 16px 5px 16px;
-  --gradient1-45: linear-gradient(-45deg,#FF0C0C,#FF9DC1);
-  --gradient2-45: linear-gradient(-45deg,#8E40FF,#00BAFF);
-  --gradient3-45: linear-gradient(-45deg,#5B00D8,#FF8DFF);
-  --gradient4-45: linear-gradient(-45deg,#FF3C76,#FF6C51,#FFC12A);
-  --gradient5-45: linear-gradient(-45deg,#FFFFFF,#CBD1D2);
-  --gradient6-45: linear-gradient(-45deg,#6FFFD8,#D5FFA3);  
-  --gradient1-90: linear-gradient(90deg,#FF0C0C,#FF9DC1);
-  --gradient2-90: linear-gradient(90deg,#8E40FF,#00BAFF);
-  --gradient3-90: linear-gradient(90deg,#5B00D8,#FF8DFF);
-  --gradient4-90: linear-gradient(90deg,#FF3C76,#FF6C51,#FFC12A);
-  --gradient5-90: linear-gradient(90deg,#FFFFFF,#CBD1D2);
-  --gradient6-90: linear-gradient(90deg,#6FFFD8,#D5FFA3);  
-  --highlight-color: #FFBE2B;
-  --alert-color: #F55B5B;
-  --hot-color: #B20021;
-  --button-color1: #911AE5;
-  --enabled-color: #808080;
-  --disabled-color: #D1D1D1;
-  --shadow-offset: 0 4px 8px 0 #00000012;
+	--padding-elem: 8px 16px 5px 16px;
+	--gradient1-45: linear-gradient(-45deg,#FF0C0C,#FF9DC1);
+	--gradient2-45: linear-gradient(-45deg,#8E40FF,#00BAFF);
+	--gradient3-45: linear-gradient(-45deg,#5B00D8,#FF8DFF);
+	--gradient4-45: linear-gradient(-45deg,#FF3C76,#FF6C51,#FFC12A);
+	--gradient5-45: linear-gradient(-45deg,#FFFFFF,#CBD1D2);
+	--gradient6-45: linear-gradient(-45deg,#6FFFD8,#D5FFA3);  
+	--gradient1-90: linear-gradient(90deg,#FF0C0C,#FF9DC1);
+	--gradient2-90: linear-gradient(90deg,#8E40FF,#00BAFF);
+	--gradient3-90: linear-gradient(90deg,#5B00D8,#FF8DFF);
+	--gradient4-90: linear-gradient(90deg,#FF3C76,#FF6C51,#FFC12A);
+	--gradient5-90: linear-gradient(90deg,#FFFFFF,#CBD1D2);
+	--gradient6-90: linear-gradient(90deg,#6FFFD8,#D5FFA3);  
+	--highlight-color: #FFBE2B;
+	--alert-color: #F55B5B;
+	--hot-color: #B20021;
+	--button-color1: #911AE5;
+	--enabled-color: #808080;
+	--disabled-color: #D1D1D1;
+	--shadow-offset: 0 4px 8px 0 #00000012;
 }
 
 body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Acumin-Pro', 'Arial', 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+	margin: 0;
+	padding: 0%;
+	font-family: -apple-system, BlinkMacSystemFont, 'Acumin-Pro', 'Arial', 'Segoe UI', 'Roboto', 'Oxygen',
+		'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+	font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+		monospace;
 }
 
 a, a:hover,a:visited, a:focus, a:active {
-  text-decoration:none;
+	text-decoration:none;
+}
+
+@media screen and (min-width: 320px) and (max-width: 767px) and (orientation: landscape) {
+	#root {
+		display: none;
+	}
+	.noLandscape {
+		color: var(--disabled-color);
+		background: white;
+		display: block;
+		width: 100vw;
+		height: 100vh;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+	.noLandscape::after {
+		content: 'Switch to Laptop or\A Portrait View';
+		display: block;
+	}
+}
+
+@media screen and (orientation: portrait) {
+	.noLandscape {
+		display: none
+	}
+	.noLandscape > svg {
+		display: none;
+	}	
+}
+
+@media screen and (max-width: 320px) and (orientation: landscape) {
+	.noLandscape {
+		display: none
+	}
+	.noLandscape > svg {
+		display: none;
+	}	
+}
+
+@media screen and (min-width: 767px) and (orientation: landscape) {
+	.noLandscape {
+		display: none
+	}
+	#plsRot {
+		display: none;
+	}	
 }

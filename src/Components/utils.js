@@ -1,5 +1,9 @@
+import axios from "axios"
+
 export const getUser = () => {
-    return JSON.parse(sessionStorage.getItem('user'))
+    let x = sessionStorage.getItem('user')
+    if (!x) return x;
+    return JSON.parse(x)
 }
 
 export const setUser = (data) => {
@@ -10,27 +14,44 @@ export const deleteSession = () => {
     sessionStorage.removeItem('user')
 }
 
-export function authHeader() {
-    const user = JSON.parse(localStorage.getItem('user'))
-    if (user && user.accessToken) {
-        return { 'x-access-token': user.accessToken }
-    } else {
-        return {}
+export async function verifyUser() {
+    let token = getUser()
+    if (!token) return false
+    let api = process.env.REACT_APP_API + '/api/user'
+    let options = {
+        method: 'POST',
+        headers: {
+            'Authorization': token.accessToken,
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        }
     }
+    return axios(api + '/auth', options)
+        .then((res) => {
+            return res.data.auth
+        })
+        .catch(err => { console.log(err); return false })
 }
 
-export function getToken() {
-    const user = JSON.parse(localStorage.getItem('user'))
-    if (user && user.accessToken) {
-        return user.accessToken
-    } else {
-        return null
-    }
-}
+export function restoreUser(id, token) {
 
-export function restoreSession() {
-    fetch(process.env.API,{headers: authHeader})
-        .then(data => setUser(data))
+    // this is INCOMPLETE & probably not needed
+
+    let api = process.env.REACT_APP_API + '/api/user'
+    let options = {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'authorization': token },
+        data: { id: id }
+    }
+    axios(api + '/restore', options)
+        .then((res) => {
+            setUser(res)
+            return true;
+        })
+        .catch(err => {
+            console.log(err);
+            return false;
+        })
 }
 
 export const DesignPalette = {

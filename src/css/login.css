@@ -15,23 +15,29 @@
 
 .componentContainLog {
     z-index: 1;
-    width: 50vw;
-    height: 75vh;
+    width: auto;
     display: flex;
-    border-radius: 15px;
-    background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(2.4px);
-    box-shadow: 2px 2px 4px 0 rgba(0, 0, 0, 0.03);
 }
 
 .bar1 {
     display: flex;
     position: relative;
     flex-direction: column;justify-content: space-evenly;
-    width: 40%;
+    width: 20vw;
+    height: 75vh;
     background: white;
     border-radius: 15px;
     padding: 10px 20px;
+}
+
+.bar2 {
+    width: 32.5vw;
+    transform: translateX(-5%);
+    z-index: -1;
+    border-radius: 15px;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(2.4px);
+    box-shadow: 2px 2px 4px 0 rgba(0, 0, 0, 0.03);
 }
 
 .loginLogo {
@@ -44,7 +50,7 @@
     height: 100%;
     display: flex;
     /* justify-content: center; */
-    /* align-items: center;   */
+    align-items: center;  
     margin: auto;
 }
 
@@ -52,13 +58,53 @@ form {
     width: 100%;
 }
 
-.swipeOut {
-    animation: fadeOut 500ms ease-in forwards;
+.fadeIn {
+    animation: fadeIn ease-in 300ms forwards;
 }
 
-.fadeIn {
-    opacity: 0.1;
-    animation: fadeIn ease-in 500ms forwards;
+.userLog {
+    margin: -25px auto 5px auto;
+    width: auto;
+    height: 100px;
+}
+
+.field4me {
+    width: 100%;
+    height: auto;
+    margin: 7px 0 10px 0;
+    display: flex;
+    flex-direction: column;
+    font-family: 'Bebas Neue Regular';color: var(--disabled-color);font-size: 0.9em;
+    text-align: center;
+    position: relative;
+    transition: all 500ms ease;
+    box-sizing: border-box;
+}
+
+.s2 span {
+    left: calc(50% - 17px) !important;
+}
+
+.s2 input {
+    text-align: center;
+}
+
+.s2 .logInp:focus ~ span, .s2 .logInp:active ~ span {
+    transform: translateY(-20px) !important;
+    background: white;
+    color: var(--highlight-color);font-size: 0.9em;
+}
+
+.s2 .logInp:valid ~ span {
+    transform: translateY(-20px) !important;
+    background: white;
+    color: black;font-size: 0.9em;
+}
+
+.field .logInp:disabled ~ span  {
+    transform: translateY(-20px) !important;
+    background: white;
+    color: var(--disabled-color);font-size: 0.9em;
 }
 
 .field {
@@ -67,7 +113,7 @@ form {
     margin: 7px 0;
     display: flex;
     position: relative;
-    transition: all 500ms;
+    transition: all 500ms ease;
     box-sizing: border-box;
 }
 
@@ -80,7 +126,7 @@ form {
     margin-top: auto;
     margin-bottom: auto;
     background: transparent;
-    border: 2.5px solid var(--enabled-color);
+    border: 2.3px solid var(--enabled-color);
     outline: none;
     border-radius: 4px;
 }
@@ -141,7 +187,7 @@ input:internal-autofill-selected {
 }
 
 .field .logInp:focus, .focus .logInp:active {
-    border: 2.5px solid var(--highlight-color);
+    border: 3px solid var(--highlight-color);
 }
 
 .field .logInp:focus ~ span, .field .logInp:active ~ span {
@@ -210,9 +256,230 @@ input:internal-autofill-selected {
     left: 5px;
 }
 
+.field2 {
+    width: 100%;
+    margin: 7px 0;
+    display: flex;
+    position: relative;
+    transition: all 500ms ease;
+    box-sizing: border-box;
+}
+
+
+#checkF {
+    font-family: 'Acumin Pro';font-size: 9pt;  
+    margin: auto 0 auto 0;
+    width: 50%;
+    transform: translateY(2px);
+}
+
+.forgot {
+    font-family: 'Acumin Pro';font-size: 9pt;
+    text-align: right;
+    width: 50%;
+    color: #6a13a8;
+    margin: auto 0px auto 25px;
+}
+
+.divider {
+    width: 100%;
+    height: 2px;
+    background: var(--disabled-color);
+    margin-top: 20px;
+    margin-bottom: 20px
+}
+
+.orTxt {
+    position: absolute;
+    font-family: 'Bebas Neue Bold';font-size: 16pt;color:  var(--disabled-color);
+    background: white;
+    padding: 2px 14px;
+    left: calc(50% - 27.6px);
+    top: 10px
+    /* margin: 1px 0 1px 0; */
+}
+
+.googleLogin {
+    position: relative;
+    width: 100%;
+    height: 40px;
+    background: white;
+    border-radius: 4px;
+    margin: auto;
+    color: black;
+    display: flex;
+    justify-content: center;align-items: center;
+    font-size: 1em;
+    font-family: 'Bebas Neue Bold';
+    cursor: pointer;
+    outline: none;
+    border: 2px solid var(--disabled-color);
+}
+
+.igoogle {
+    height: 17px;
+    margin: 0 10px 0 10px;
+}
+
+.dashedPath {
+    animation: draw 2s 1s cubic-bezier(0.71, 0.04, 0.35, 0.71) forwards;
+    position: absolute;
+    opacity: 0.3;
+}
+
+.linetext {
+    font-family: 'Clint Marker';font-size: 28pt;
+    position: absolute
+}
+
+.l1 {
+    height: 65%;
+    stroke-dasharray: 2520;
+    stroke-dashoffset: 2520;
+    left: -35%;
+    bottom: 17%;
+    /* transform: rotate(17deg); */
+}
+
+.l2 {
+    height: 36%;
+    stroke-dasharray: 3300;
+    stroke-dashoffset: 3300;
+    bottom: 4%;
+    left: -18%;
+}
+
+.l3 {
+    width: 40%;
+    stroke-dasharray: 1400;
+    stroke-dashoffset: 1400;
+    top: -32%;
+    left: 10%;
+}
+
+.t4 {
+    border: none;
+    outline: none;
+    width: 25vw;
+    box-sizing: border-box;
+    transform: translateY(37.5vh) translateX(5vw);
+    text-align: center;
+    height: 1vh
+}
+
+.t1l1 {
+    color: white;opacity: 0.75;
+    left: 15%;
+    top: 7%;
+    transform: rotate(-5deg);
+}
+
+.t2l2 {
+    color: #C2D6EA;opacity: 0.75;
+    bottom: 18%;
+    right: 6%;
+    text-align: center;
+    transform: rotate(13deg);
+}
+
+.t3l3 {
+    color: #C2D6EA;
+    opacity: 0.75;
+    top: 27%;
+    left: 9%;
+    text-align: center;
+    transform: rotate(-7deg)
+}
+
+.begone {
+    animation: begone 350ms cubic-bezier(0.53,-0.68, 0.09, 0.99) forwards;
+}
+
+.become {
+    animation: become 350ms cubic-bezier(0.75, 0.01, 0.6, 1.59) forwards;
+}
+
+.begone2 {
+    animation: begone2 430ms cubic-bezier(0.53,-0.68, 0.09, 0.99) forwards;
+}
+
+.besmall {
+    animation: besmall 450ms cubic-bezier(0.53,-0.68, 0.09, 0.99) forwards;
+}
+
+.swipeOut {
+    animation: fadeOut 200ms ease-in forwards;
+}
+
 .shake {
     animation: shake 600ms cubic-bezier(0.62, 0.02, 0.32, 0.99);
 }
+
+@media (max-width: 400px) {
+    #cursor {
+        display: none;
+    }
+    .regMode {
+        top: -5px;
+        left: -5px;
+    }
+    .loginMode {
+        bottom: -5px;
+        right: -5px;
+    }
+    .componentContainLog{
+        width: 93%;
+        justify-content: center;
+    }
+    .bar2 {
+        display: none;
+    }
+    .bar1 {
+        width: 93%;
+        height: 68vh;
+        padding: 8px 8px;
+    }
+}
+
+
+@media (min-width: 400px) and (max-width: 700px) {
+    #cursor {
+        display: none;
+    }
+    .regMode {
+        top: -5px;
+        left: -5px;
+    }
+    .loginMode {
+        bottom: -5px;
+        right: -5px;
+    }
+    .componentContainLog{
+        width: 93%;
+        justify-content: center;
+    }
+    .bar2 {
+        display: none;
+    }
+    .bar1 {
+        width: 80%;
+        /* width: 50%; */
+        height: 65vh;
+    }
+}
+
+@media (min-width: 700px) and (max-width: 1100px) {
+    .bar1 {
+        width: 30vw;
+        height: 66vh;
+    }
+}
+
+@keyframes draw {
+    to {
+      stroke-dashoffset: 0;
+    }
+  }
 
 @keyframes shake {
     20% {
@@ -231,23 +498,51 @@ input:internal-autofill-selected {
     }
 }
 
+@keyframes begone {
+    from {
+        transform: scale(1);
+    }
+    to {
+        transform: scale(0);
+    }
+}
+
+@keyframes become {
+    from {
+        transform: scale(0);
+    }
+    to {
+        transform: scale(1);
+    }
+}
+
+@keyframes begone2 {
+    to {
+        width: 0;
+    }
+}
+
+
+@keyframes besmall {
+    to {
+        height: 55vh;
+    }
+}
+
 @keyframes fadeOut {
     0% {
         opacity: 1
     }
-    50% {
-        opacity: 0.3;
-    }
     100% {
         opacity: 0.01;
-        transform: translateX(-70%);
+        transform: translateY(-10px);
     }
 }
 
 @keyframes fadeIn {
     0% {
-        opacity: 0.1;
-        transform: translateX(130%);
+        opacity: 0.01;
+        transform: translateY(10px);
     }
     100% {
         opacity: 1;

@@ -78,7 +78,7 @@ class Home extends React.Component {
                 <div className="bottomDeets">
                     <div className="headline-bD">
                         <div className="mainTxt-bd">And in<br />just<br /> 3 steps</div>
-                        <Link to='/login'><input type="button" value="Create your own" className="btn-bD" /></Link>
+                        <Link to={{ pathname:'/login', origin: '1' }}><input type="button" value="Create your own" className="btn-bD" /></Link>
                     </div>
                     <div className="design-bD">
                         <div className="boxDb oneH-bD">
