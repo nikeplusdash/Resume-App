@@ -53,22 +53,22 @@ function Login() {
     }
     const handleLogin = async gData => {
         setLoading(true)
-        if (!gData.accessToken) {
-            document.getElementsByClassName('googleLogin')[0].classList.add("shake")
-            setLoading(false)
-            setTimeout(() => { document.getElementsByClassName('googleLogin')[0].classList.remove("shake"); setLoading(false) }, 1000)
-            return false
-        }
         axios.get(api + '/gAuth', { params: { accessToken: gData.tokenId } }).then((res => {
             setUser(res.data)
+            setLoading(false)
             history.replace('/Dashboard')
         }))
+    }
+    const handleFailure = gData => {
+        document.getElementsByClassName('googleLogin')[0].classList.add("shake")
+        setLoading(false)
+        setTimeout(() => { document.getElementsByClassName('googleLogin')[0].classList.remove("shake"); setLoading(false) }, 1000)
     }
     return (
         <>
             <form onSubmit={e => handleSubmit(e)}>
                 <div className="field s1">
-                    <input pattern='[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$' oninvalid="setCustomValidity('Enter a valid Email ID')" onChange={e => setId(e.target.value)} className="logInp" type="text" autoComplete="email" required id="id" />
+                    <input pattern='[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$' oninvalid="setCustomValidity('Enter a valid Email ID')" onChange={e => setId(e.target.value)} className="logInp" type="text" autoComplete="email" required id="id" />
                     <span>Email ID</span>
                 </div>
                 <div className="field s1">
@@ -91,7 +91,7 @@ function Login() {
                     <GoogleLogin
                         clientId={process.env.REACT_APP_GOOGLE_CLIENTID}
                         onSuccess={handleLogin}
-                        onFailure={handleLogin}
+                        onFailure={handleFailure}
                         render={props =>
                             <button className="googleLogin" disabled={loading} onClick={props.onClick} type="button"><img className="igoogle" src={igoogle} /> Sign in with Google</button>
                         }
@@ -163,7 +163,7 @@ function Register() {
                     new Promise((resolve, reject) => {
                         switcher.classList.add("begone")
                         bar2.classList.add("begone2")
-                        for(let i = 0;i < col2.length;i++) {
+                        for (let i = 0; i < col2.length; i++) {
                             col2[i].style.display = 'none'
                         }
                         setTimeout(() => {
