@@ -7,15 +7,12 @@ module.exports = (sequelize, Sequelize) => {
         },
         fname: {
             type: Sequelize.TEXT,
-            allowNull: false
         },
         lname: {
             type: Sequelize.TEXT,
-            allowNull: false
         },
         pwd: {
             type: Sequelize.TEXT,
-            allowNull: false
         },
         link_gmail: {
             type: Sequelize.BOOLEAN,

@@ -38,5 +38,6 @@ db.Sequelize = Sequelize;
 db.sequelize = sequelize;
 db.client = require('./client.model')(sequelize,Sequelize)
 db.cvresume = require('./cvresume.model')(sequelize,Sequelize)
+// db.otp = require('./otp.model')(sequelize,Sequelize)
 
 module.exports = db;

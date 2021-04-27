@@ -2,9 +2,9 @@ CREATE EXTENSION lo;
 
 CREATE TABLE client(
     id TEXT PRIMARY KEY NOT NULL,
-    fname TEXT NOT NULL,
-    lname TEXT NOT NULL,
-    pwd TEXT NOT NULL,
+    fname TEXT,
+    lname TEXT,
+    pwd TEXT,
     link_gmail BOOLEAN DEFAULT false,
     img_thumb BYTEA
 );
