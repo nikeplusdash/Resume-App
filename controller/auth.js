@@ -1,28 +1,29 @@
 const bcrypt = require('bcrypt');
 const { OAuth2Client } = require('google-auth-library')
 const jwt = require('jsonwebtoken');
+const request = require('request');
 const db = require('../models/db');
 const gClient = new OAuth2Client(process.env.CLIENT_ID)
 const Client = db.client;
 
 // crete a restore end point
 
-exports.auth = async  (req, res) => {
+exports.auth = async (req, res) => {
     const token = req.headers['authorization'];
-    const gAuth = req.body.accessToken
+    const gAuth = req.body.google
     const secret = process.env.SECRET;
     if (gAuth) {
         const ticket = await gClient.verifyIdToken({
             idToken: token,
             audience: process.env.CLIENT_ID
-        });
-        let profile = ticket.payload()
-        res.status(200).send({ auth: true, decoded: {data: profile.profileObj, accessToken: profile.access_token}});
+        }).catch(err => { return res.status(401).send({ auth: false, message: 'Invalid token.' }); })
+        const profile = ticket.getPayload()
+        return res.status(200).send({ auth: true, decoded: { data: profile.profileObj, accessToken: profile.access_token } });
     }
     if (!token) return res.status(403).send({ auth: false, message: 'No token provided.' });
     jwt.verify(token, secret, (err, decoded) => {
         if (err) return res.status(401).send({ auth: false, message: 'Invalid token.' });
-        res.status(200).send({ auth: true, decoded });
+        return res.status(200).send({ auth: true, decoded });
     })
 }
 
@@ -31,14 +32,22 @@ exports.gAuth = async (req, res) => {
     const ticket = await gClient.verifyIdToken({
         idToken: accessToken,
         audience: process.env.CLIENT_ID
-    })
+    }).catch(err => { return res.status(401).send({ auth: false, message: 'Invalid token.' }); })
     const { given_name, family_name, email, picture } = ticket.getPayload();
-    await Client.findOrCreate({ where: { id: email }, defaults: { id: email, fname: given_name, lname: family_name, imgThumb: picture, link_gmail: true } })
+    await Client.findOrCreate({ where: { id: email }, defaults: { id: email, fname: given_name, lname: family_name, link_gmail: true } })
         .then(userV => {
             let [user, wasCreated] = userV
-            if (!wasCreated) user.update({link_gmail: true})
-            res.status(200).send({ id: email, fname: given_name, lname: family_name, imgThumb: picture, accessToken: accessToken})
-
+            if(wasCreated) {
+                request.get(picture,{encoding: 'base64'},(err,res,body)=>{
+                    if(err) console.err(err)
+                    let imgData = 'data:'+res.headers['content-type']+';base64,'+body
+                    user.update({img_thumb: imgData})
+                })
+                // user.update({img_thumb: picture.toString()})
+            }
+            if (!wasCreated) user.update({ link_gmail: true })
+            let imgData = user.img_thumb
+            return res.status(200).send({ id: email, fname: given_name, lname: family_name, img_thumb: imgData, accessToken: accessToken })
         })
 }
 

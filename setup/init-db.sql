@@ -6,7 +6,7 @@ CREATE TABLE client(
     lname TEXT,
     pwd TEXT,
     link_gmail BOOLEAN DEFAULT false,
-    img_thumb BYTEA
+    img_thumb TEXT
 );
 
 CREATE TABLE cvresume (

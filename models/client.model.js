@@ -19,7 +19,7 @@ module.exports = (sequelize, Sequelize) => {
             defaultValue: false
         },
         img_thumb: {
-            type: Sequelize.BLOB
+            type: Sequelize.TEXT
         },
     }, {
         schema: "public",
