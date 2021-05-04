@@ -1,6 +1,6 @@
 import React from 'react'
 import { Route, Redirect } from 'react-router-dom'
-import { verifyUser} from '../Components/utils'
+import { verifyUser } from '../Components/utils'
 
 class PublicRoute extends React.Component {
     state = {

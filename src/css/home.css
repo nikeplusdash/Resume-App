@@ -80,7 +80,13 @@ body {
     justify-self: center;
     transform: scale(1.15) translateX(4.5%);
     transition: all 1s;
+    object-fit: contain;
+    overflow: hidden;
     /* margin-top: 50px; */
+}
+
+.circleBG {
+    background-clip: content-box;
 }
 
 .bottomDeets {

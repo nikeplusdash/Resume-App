@@ -231,7 +231,8 @@ input:internal-autofill-selected {
     height: 50px;
     background: white;
     border-radius: 50%;
-    transition: all 1s ease-in;
+    /* transition: all 1s ease-in; */
+    transform: scale(1);
     position: absolute;
     box-shadow: var(--shadow-offset);
     z-index: 1;

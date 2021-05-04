@@ -17,9 +17,13 @@ export const deleteSession = () => {
 export async function verifyUser() {
     let token = getUser()
     if (!token) return false
+    if (!token.accessToken) {localStorage.removeItem("user");return false}
     let api = process.env.REACT_APP_API + '/api/user'
     let options = {
         method: 'POST',
+        data: {
+            google: localStorage.getItem("google")
+        },
         headers: {
             'Authorization': token.accessToken,
             'Accept': 'application/json',

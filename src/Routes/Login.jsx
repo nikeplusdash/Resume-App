@@ -35,8 +35,8 @@ function Login() {
             setUser(res.data)
             history.replace('/Dashboard')
         }).catch(err => {
-            let errorSrc = err.response.data.code
             console.log(err.response)
+            let errorSrc = err.response.data.code
             if (errorSrc === -1) {
                 document.getElementById('id').classList.add("shake")
                 setLoading(false)
@@ -54,10 +54,12 @@ function Login() {
     const handleLogin = async gData => {
         setLoading(true)
         axios.get(api + '/gAuth', { params: { accessToken: gData.tokenId } }).then((res => {
+            localStorage.setItem("google",true)
             setUser(res.data)
             setLoading(false)
+            console.log(res)
             history.replace('/Dashboard')
-        }))
+        })).catch(err => localStorage.removeItem("user"))
     }
     const handleFailure = gData => {
         document.getElementsByClassName('googleLogin')[0].classList.add("shake")
@@ -132,6 +134,7 @@ function Register() {
         axios(api + '/register', options)
             .then(res => {
                 setUser(res.data)
+                setLoading(false)
                 console.log(res)
                 history.replace('/Dashboard')
             })

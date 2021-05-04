@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import { Route, Redirect } from 'react-router-dom'
-import { getUser, restoreUser, verifyUser } from '../Components/utils'
-import jwtDecode from 'jwt-decode'
+import { verifyUser } from '../Components/utils'
 
 class PrivateRoute extends React.Component {
     state = {
