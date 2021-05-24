@@ -14,18 +14,17 @@ export const deleteSession = () => {
     sessionStorage.removeItem('user')
 }
 
-export async function verifyUser() {
+// Changed due to speed concerns
+export async function verifyUser2() {
     let token = getUser()
     if (!token) return false
     if (!token.accessToken) {localStorage.removeItem("user");return false}
     let api = process.env.REACT_APP_API + '/api/user'
     let options = {
-        method: 'POST',
-        data: {
-            google: localStorage.getItem("google")
-        },
+        method: 'GET',
         headers: {
             'Authorization': token.accessToken,
+            'G-Auth': localStorage.getItem("google"),
             'Accept': 'application/json',
             'Content-Type': 'application/json'
         }
@@ -35,6 +34,13 @@ export async function verifyUser() {
             return res.data.auth
         })
         .catch(err => { console.log(err); return false })
+}
+
+export async function verifyUser() {
+    let token = getUser()
+    if (!token) return false
+    if (!token.accessToken) {localStorage.removeItem("user");return false}
+    return true;
 }
 
 export function restoreUser(id, token) {

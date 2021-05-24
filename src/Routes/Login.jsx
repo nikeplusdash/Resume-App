@@ -1,7 +1,8 @@
-import React, { useState } from "react"
+import React, { useEffect, useState } from "react"
 import { TweenMax, TimelineMax, Quad } from "gsap"
 import { GoogleLogin } from "react-google-login"
 import { useHistory } from "react-router-dom"
+import socketIOClient from "socket.io-client";
 import axios from "axios"
 import { setUser } from '../Components/utils'
 import image from '../logowt.svg'
@@ -31,7 +32,6 @@ function Login() {
         }
         axios(api + '/login', options).then((res) => {
             setLoading(false)
-            console.log(res.data)
             setUser(res.data)
             history.replace('/Dashboard')
         }).catch(err => {
@@ -83,7 +83,6 @@ function Login() {
                 <div className="field2 s1">
                     <input onChange={(e) => setRemember(e.target.value)} className="radioLog" type="checkbox" id="rememberCheck" />
                     <label htmlFor="rememberCheck" id="checkF">Remember Me</label>
-                    <a className="forgot" href="javascript:void(0)">Forgot Password?</a>
                 </div>
                 <div className="field2">
                     <div className="divider"></div>
@@ -105,7 +104,7 @@ function Login() {
 }
 
 function Register() {
-    const [id, setId] = useState(null),
+    let [id, setId] = useState(null),
         [pwd, setPwd] = useState(null),
         [fname, setFname] = useState(null),
         [lname, setLname] = useState(null),
@@ -128,7 +127,7 @@ function Register() {
                 pwd: String(pwd).trim(),
                 fname: String(fname).trim(),
                 lname: String(lname).trim(),
-                OTP: String(OTP).trim(),
+                otp: String(OTP).trim(),
             })
         }
         axios(api + '/register', options)
@@ -137,6 +136,13 @@ function Register() {
                 setLoading(false)
                 console.log(res)
                 history.replace('/Dashboard')
+            })
+            .catch(err => {
+                console.log(err.message)
+                setLoading(false)
+                // alert('Invalid OTP')
+                // setLoading(false)
+                // history.go(0)
             })
 
         // Enable Loading Animation
@@ -147,15 +153,18 @@ function Register() {
         let options = {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            data: JSON.stringify({ id: String(id).toLowerCase().trim() })
+            data: JSON.stringify({
+                id: String(id).toLowerCase().trim(),
+                pwd: String(pwd).trim(),
+                fname: String(fname).trim(),
+                lname: String(lname).trim()
+            })
         }
         axios(api + '/valid', options)
             .then(res => {
                 if (res.data.code === 402) {
                     document.getElementById('id').classList.add("shake")
                     setTimeout(() => { document.getElementById('id').classList.remove("shake"); setLoading(false) }, 1000)
-
-                    // Insert Toast HERE
                 }
                 else {
                     let col = document.getElementsByClassName("s1")
@@ -186,6 +195,7 @@ function Register() {
                         document.getElementsByClassName("otptext")[0].classList.add("fadeIn")
                         document.getElementsByClassName("userLog")[0].classList.add("fadeIn")
                         document.getElementById("otp").classList.add("fadeIn")
+                        
                         setLoading(false)
                     }).then(() => {
                         let fut = res.data.timestamp
@@ -194,21 +204,43 @@ function Register() {
 
                         setT(setInterval(() => {
                             diff -= 1
+                            if (diff <= 0) {
+                                alert('Please try again')
+                                clearInterval(t)
+                                history.go(0)
+                            }
                             let min = ("" + Math.floor(diff / 60)).padStart(2, "0")
                             let sec = ("" + diff % 60).padStart(2, "0");
                             setTime(`${min}:${sec}`)
-                            if (diff <= 0) {
-                                clearInterval(t)
-                                alert('Please try again')
-                                history.push('/Login')
-                            }
                         }, 1000))
                     })
                 }
             })
             .catch(err => console.log(err.message))
-
     }
+    useEffect(() => {
+        let socket = socketIOClient(process.env.REACT_APP_API)
+        socket.once("onVerification", (data) => {
+            console.log(id,data)
+            if(id === data.id && data.verification) {
+                let options = {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    data: JSON.stringify({
+                        id: String(id).toLowerCase().trim(),
+                        pwd: String(pwd).trim(),
+                        rememberMe: false
+                    })
+                }
+                axios(api + '/login', options).then((res) => {
+                    console.log(res.data)
+                    setUser(res.data)
+                    setLoading(false)
+                    history.replace('/Dashboard')
+                })
+            }
+        })
+    })
     const doc1 = (
         <>
             <div className="field s1">
@@ -240,7 +272,7 @@ function Register() {
                 <div className="otptext">sent to {id}</div>
             </div>
             <div className="field s2">
-                <input onChange={e => setOTP(e.target.value)} disabled={loading} className="logInp" type="text" inputMode="numeric" maxLength='6' autoComplete="one-time-code" required id="otp" />
+                <input onChange={e => setOTP(e.target.value)} disabled={loading} className="logInp" type="text" inputMode="numeric" maxLength='6' required id="otp"/>
                 <span>{timeLeft}</span>
             </div>
         </>
