@@ -1,5 +1,5 @@
 module.exports = (sequelize, Sequelize) => {
-    const cvresume = sequelize.define("client", {
+    const cvresume = sequelize.define("cvresume", {
         id: {
             type: Sequelize.UUID,
             defaultValue: Sequelize.UUIDV1,

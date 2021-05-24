@@ -16,13 +16,11 @@ CREATE TABLE cvresume (
     content JSON
 );
 
--- lo_import to import the image into DB
--- lo_export to export the image from DB
--- for NodeJS use FS for I/O
--- https://robert-keller22.medium.com/upload-and-download-images-to-a-postgres-db-node-js-92e43f232ae4
-CREATE TABLE image (title text, raster lo);
-CREATE TRIGGER t_raster BEFORE UPDATE OR DELETE ON image
-    FOR EACH ROW EXECUTE FUNCTION lo_manage(raster);
-
+CREATE TABLE otp (
+    id uuid PRIMARY KEY,
+    email_id TEXT REFERENCES client(id),
+    expiry DATE,
+    otp CHAR(6)
+);
 
 INSERT INTO client(id,fname,lname,pwd,link_gmail,img_thumb) VALUES('admin-chan@gmail.com','admin','chan','12345678',false,'');
