@@ -134,7 +134,6 @@ function Register() {
             .then(res => {
                 setUser(res.data)
                 setLoading(false)
-                console.log(res)
                 history.replace('/Dashboard')
             })
             .catch(err => {
@@ -221,7 +220,6 @@ function Register() {
     useEffect(() => {
         let socket = socketIOClient(process.env.REACT_APP_API)
         socket.once("onVerification", (data) => {
-            console.log(id,data)
             if(id === data.id && data.verification) {
                 let options = {
                     method: 'POST',
@@ -233,7 +231,6 @@ function Register() {
                     })
                 }
                 axios(api + '/login', options).then((res) => {
-                    console.log(res.data)
                     setUser(res.data)
                     setLoading(false)
                     history.replace('/Dashboard')
