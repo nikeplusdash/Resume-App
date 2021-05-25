@@ -77,7 +77,6 @@ exports.valid = async (req, res) => {
                     otp: String(otp)
                 }, process.env.SECRET, { expiresIn: expiryTime })
                 token = encrypter.encrypt(token)
-                console.log( "http://localhost:8081/api/user/otp/" + token.toString())
                 OTP.create({
                     email_id: email_id,
                     otp: otp,
@@ -211,14 +210,12 @@ exports.otp = async (req, res) => {
     })
         .then(row => {
             if (row.otp !== user.otp || row.email_id !== user.id || user.expiry < new Date().getTime()) {
-                // socket out
-                console.log(row, user)
                 io.sockets.emit("onVerification", { id: user.id, verification: false })
             }
             Client.findOrCreate({
                 where: {
                     id: user.id,
-                }, defaults: {//object containing fields and values to apply
+                }, defaults: {
                     id: user.id,
                     fname: user.fname,
                     lname: user.lname,
