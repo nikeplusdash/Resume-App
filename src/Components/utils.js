@@ -43,27 +43,6 @@ export async function verifyUser() {
     return true;
 }
 
-export function restoreUser(id, token) {
-
-    // this is INCOMPLETE & probably not needed
-
-    let api = process.env.REACT_APP_API + '/api/user'
-    let options = {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json', 'authorization': token },
-        data: { id: id }
-    }
-    axios(api + '/restore', options)
-        .then((res) => {
-            setUser(res)
-            return true;
-        })
-        .catch(err => {
-            console.log(err);
-            return false;
-        })
-}
-
 export const DesignPalette = {
     1: {
         name: "Cherry Red",
@@ -92,4 +71,60 @@ export const DesignPalette = {
         accentColor: "",
         backgroundGradientCSS: "var(--gradient6-45)"
     }
+}
+
+export const dummyUserData = {
+    name: "Lorem Ipsum",
+    current: "Lorem Ipsum",
+    image: {
+        shape: 0,
+        data: "",
+        isDisplayed: true
+    },
+    description: "Lorem Ipsum",
+    highlight: [
+        {
+            type:"github",
+            data:"Lorem Ipsum"
+        },
+        {
+            type:"email",
+            data:"Lorem Ipsum"
+        },
+        {
+            type:"phone",
+            data:"Lorem Ipsum",
+        },
+    ],
+    education: [
+        {
+            place:"Lorem Ipsum",
+            desc: "Lorem Ipsum",
+            type:"Lorem Ipsum",
+            scale: "gpa", // 4point/5point/10point/100percent
+            marks: "10",
+            from: "2019",
+            to: "2021",
+            isCurrent: false
+        }
+    ],
+    experience: [
+        {
+            place:"Lorem Ipsum",
+            desc: "Lorem Ipsum",
+            referal:"Lorem Ipsum",
+            from: "2019",
+            to: "2021",
+            isCurrent: false
+        }
+    ],
+    languages: [
+        {
+            name: "English",
+            proficiency: 0.9,
+            scale: 10
+        }
+    ],
+    skills: ["Listening","Speaking","Analysing"],
+    interests: ["Playing","Reading","Singing"]
 }
