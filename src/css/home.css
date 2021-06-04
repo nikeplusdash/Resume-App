@@ -74,8 +74,8 @@ body {
     margin: 3% auto 3% auto;
     display: block;
     width: 500px;
+    font-family: 'Boltzz' !important;
 }
-
 .svgImg {
     justify-self: center;
     transform: scale(1.15) translateX(4.5%);
@@ -119,7 +119,7 @@ body {
     border: none;
     cursor: pointer;
     display: inline-block;
-    font-family: 'Bebas Neue';font-weight: bold;font-size: 0.55em;color:white;
+    font-family: 'Bebas Neue Bold';font-weight: bold;font-size: 0.55em;color:white;
     padding: 8px 25px 5px 25px;
     margin: 40px 0 0 0;
     background:rgb(43, 43, 43);
@@ -151,7 +151,7 @@ body {
     transform: translateY(15%);
     z-index: 1;
     text-shadow: 0px 6px 12px rgba(0, 0, 0, 0.1);
-    font-family: Acumin Pro;font-weight: bolder;font-size:148pt;font-size: 3em;color: white;
+    font-family: 'Acumin-Pro';font-weight: bolder;font-size:148pt;font-size: 3em;color: white;
 }
 
 .subDesc {
@@ -189,7 +189,7 @@ body {
     background: var(--gradient4-90);
     display: flex;
     justify-content: center;align-items: center;
-    font-family: 'Acumin Pro';font-weight:bold;color: white;
+    font-family: 'Acumin-Pro';font-weight:bold;color: white;
 }
 
 .footImg {
