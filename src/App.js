@@ -6,6 +6,7 @@ import Dashboard from "./Routes/Dashboard"
 import ResumeHandler from "./Routes/ResumeHandler"
 import PublicRoute from "./Routes/PublicRoute"
 import PrivateRoute from "./Routes/PrivateRoute"
+import Resume from "./Components/Resume"
 
 function App() {
 	return (
@@ -14,8 +15,9 @@ function App() {
 				<Route exact path="/" component={Home} />
 				<PublicRoute exact path="/login" component={Login} />
 				<PrivateRoute exact path="/dashboard" component={Dashboard} />
-				{/* <PrivateRoute exact path="/resume" component={ResumeHandler} />
-				<PrivateRoute exact path="/settings" component={Settings} />
+				<PrivateRoute path="/resume" component={Resume} />
+				<PrivateRoute path="/resume" component={ResumeHandler} />
+				{/* <PrivateRoute exact path="/settings" component={Settings} />
 				<PrivateRoute exact path="/logout" component={Logout} /> */}
 				<Redirect to="/UhOh" />
 			</Switch>

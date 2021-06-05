@@ -1,12 +1,295 @@
 .resume {
     width: 85%;
-    height: 0;
+    height: auto;
     padding-top: calc(2144 / 1516 * 100%);
     background: white;
     position: relative;
     margin-left: auto;
     margin-right: auto;
     margin-bottom: 5%;
+    font-size: 18px;
     color: black;
-    box-shadow: var(--shadow-offset);
+    box-shadow: 0px 0px 20px 0 #00000012;
+    display: flex;
+    flex-direction: column;
+    /* Variables for this */
+    --gradient-start: #8E40FF;
+    --gradient-end: #00BAFF;
+    --font-color: #8547FF;
+    --special-font-color: #FFFFFF;
+    --background-gradient: var(--gradient2-45)
+}
+
+.header [contentEditable=true]:focus {
+    /* outline: none; */
+    background: #f0f0f0;
+    border-radius: 5px;
+    padding: 5px;
+}
+
+.header [contentEditable=true]:empty:not(:focus)::after {
+    content: attr(data-text);
+    padding: 0px;
+    transition: all 2s;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    margin: 0%;
+    padding: 0%;
+}
+
+input {
+    outline: none;
+    border-style: none none solid none;
+    transition: all 250ms;
+    border-bottom: var(--gradient-end) solid;
+}
+
+input:focus {
+    outline: none;
+    border-style: none none solid none;
+    border-bottom: var(--gradient-start) solid;
+}
+
+.header {
+    position: absolute;
+    top: 0%;
+    /* background: red; */
+    width: 100%;
+    height: 17%;
+    display: flex;
+    flex-direction: row;
+}
+
+.highlight {
+    position: absolute;
+    top: 17%;
+    background: var(--background-gradient);
+    color: var(--special-font-color);
+    font: 'Acumin-Pro Semibold';
+    font-size: 1.1em;
+    width: 100%;
+    height: 2.3%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.details-container {
+    position: absolute;
+    top: 19.3%;
+    width: 90%;
+    height: 75.7%;
+    margin: 5%;
+}
+
+.mfield {
+    margin: 1% 0 4%;
+}
+
+.detail-field {
+    display: flex;
+    flex-direction: column;
+    margin: 0.5% 0 1% 0px;
+    font-family: 'Acumin-Pro';
+    font-weight: normal;
+    font-style: normal;
+}
+
+.header-c1 {
+    width: 25%;
+    margin: 3%;
+}
+
+.highlighter-shape {
+    width: 90%;
+    height: 90%;
+    display: flex;
+    margin: auto;
+    justify-content: center;
+    z-index: 1;
+}
+
+.highlighter-shape::before {
+    display: block;
+    position: absolute;
+    border-radius: 1050px;
+    width: 100px;
+    height: 100px;
+    top: 0%;
+    left: 0%;
+    z-index: 5;
+    /* padding-bottom: 100%; */
+    background: #00BAFF;
+}
+
+.header-c2 {
+    width: 85%;
+    margin: 3%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /* background: rgb(75, 24, 24); */
+}
+
+.header-c2 .name {
+    font: 'Acumin-Pro';
+    font-weight: bold;
+    font-size: 3em;
+    transition: all 500ms;
+    margin-bottom: 0%;
+    position: relative;
+    /* background: rgb(13, 255, 33); */
+}
+
+.header-c2 .current {
+    font: 'Arial';
+    font-style: italic;
+    transition: all 500ms;
+    margin: 2% 0;
+    height: 10%;
+    /* background: rgb(13, 255, 33); */
+}
+
+.header-c2 .description {
+    font: 'Arial';
+    font-size: 1.1em;
+    transition: all 500ms;
+    height: auto;
+    max-height: 100%;
+    overflow-y: hidden;
+    /* background: rgb(13, 255, 33); */
+}
+
+.highlight-field {
+    margin-left: 7px;
+    margin-right: 7px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.highlight-field-c1 {
+    margin: 5px;
+    padding-bottom: 2px;
+}
+
+.highlight-field-c2 {
+    margin: 7px;
+}
+
+.field-r1 {
+    display: flex;
+    justify-content: space-between;
+}
+
+.field-row {
+    display: flex;
+}
+
+.field-column {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin: 1% 0 1% 0px;
+}
+
+.field-row-data {
+    display: flex;
+    flex-direction: column;
+    margin: 0.5% 3% 1% 0;
+    font-family: 'Acumin-Pro';
+    font-weight: bolder;
+    font-style: italic;
+    color: var(--special-font-color);
+    padding: 8px 28px 4px 28px;
+    border-radius: 20px;
+    background: var(--background-gradient);
+}
+
+.pbar {
+    margin: 0px 30px;
+    border: none;
+    width: 55%;
+    margin-top: 7px;
+    height: 7px;
+    background: transparent;
+}
+
+.pbar::-moz-progress-value {
+    border-radius: 20px;
+    background: var(--gradient-end);
+}
+
+.pbar::-moz-progress-bar {
+    border-radius: 20px;
+    background: white
+}
+
+.pbar::-webkit-progress-value {
+    border-radius: 20px;
+    background: var(--gradient-end);
+}
+
+.pbar::-webkit-progress-bar {
+    border-radius: 20px;
+    background: white
+}
+
+.progress-name {
+    width: 15%
+}
+
+.progress-row-data {
+    display: flex;
+    justify-content: start;
+    font-weight: bold;
+    width: 50%;
+    margin: 0.5% 0 1% 0px;
+}
+
+.field-r1-c2 {
+    display: flex;
+    justify-content: space-between;
+    font-weight: bold;
+    background: var(--background-gradient);
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+}
+
+.field-place {
+    margin: 0%;
+    font-size: 1.5em;
+    font-family: "Acumin-Pro Semibold";
+    font-style: italic;
+}
+
+.field-type {
+    font-size: 0.8em;
+    font-style: italic;
+}
+
+.field-marks {
+    font-weight: bold;
+    font-size: 0.8em;
+    text-transform: uppercase;
+}
+
+.field-referal {
+    font-family: 'Acumin-Pro';
+    font-weight: lighter;
+    font-style: italic;
+    text-align: end;
+    background: var(--background-gradient);
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+}
+
+@media screen and (max-width:800px) {
+    .resume {
+        font-size: 10px;
+    }
 }

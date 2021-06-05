@@ -89,7 +89,7 @@
 
 .txt {
     font-family: 'Bebas Neue Bold';
-    font-weight: bold;
+    /* font-weight: bold; */
     font-size: 10pt;
     user-select: none;
 }
