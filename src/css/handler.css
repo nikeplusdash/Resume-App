@@ -1,0 +1,275 @@
+/* html {
+    margin-left: calc(100vw - 100%);
+    margin-right: 0;
+} */
+
+body {
+    margin: 0%;
+    padding: 0%;
+    width: 100vw;
+    height: 100%;
+    box-sizing: border-box;
+    overflow-x:  hidden;
+}
+
+.resume {
+    width: 85%;
+    height: 0;
+    padding-top: calc(2144 / 1516 * 100%);
+    background: white;
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 5%;
+    color: black;
+    box-shadow: var(--shadow-offset);
+}
+
+.nav {
+    width: 100vw;
+    margin: 0;
+    padding: 20px 0 20px 0;
+    display: flex;
+    flex-direction: row-reverse;
+}
+
+.i1,.i2 {
+    background: #fff;
+    padding: var(--padding-elem);
+    border-radius: 50px;
+}
+
+.wrap-bg,.wrap-nobg {
+    padding: 3px;
+    margin-right: 40px;
+    font-size: 0.9em;
+    background: var(--gradient3-90);
+    border-radius: 50px;
+}
+
+.wrap-nobg {background: none;}
+
+.wrap-bg:hover,.wrap-nobg:hover {
+    animation: scaleUp 300ms 1 normal forwards ease-in-out;
+}
+
+.container {
+    width: 100vw;
+}
+
+.joint {
+    display: block;
+    margin: auto;
+    position: relative;
+    text-align: center;
+}
+
+.text-j {
+    position: relative;
+    text-align: center;
+    user-select: none;
+    z-index: 1;
+    transform: translateY(150px);
+    transition: color 0.75s ease;
+    font-family: Acumin Pro;font-weight: bold;font-style: italic;font-size: 1.4em;
+}
+
+.text-j::after {
+    content: '\276F';
+    display: block;
+    width: 64px;
+    margin: auto;
+    font-family: Arial;font-weight: bold;font-style: normal;font-size: 2em;
+    transform: rotate(90deg)
+}
+
+.logo-img {
+    margin: 3% auto 3% auto;
+    display: block;
+    width: 500px;
+    font-family: 'Boltzz' !important;
+}
+.svgImg {
+    justify-self: center;
+    transform: scale(1.15) translateX(4.5%);
+    transition: all 1s;
+    object-fit: contain;
+    overflow: hidden;
+    /* margin-top: 50px; */
+}
+
+.circleBG {
+    background-clip: content-box;
+}
+
+.bottomDeets {
+    display:flex;
+    flex-direction: row;align-items: center;
+    width: 100%;
+    height: 40vh;
+    color: black;
+    margin: 40vh 0 25vh 0;
+}
+
+.headline-bD {
+    width: 35%;
+    height: 100%;
+    margin: 0 40px 0 40px;
+    display: flex;
+    text-align: center;
+    flex-direction: column;justify-content: center;align-items: center;font-size: 10vh;
+}
+
+.mainTxt-bd {
+    font-family: Boltzz;font-size: 0.9em;
+    background: -webkit-linear-gradient(#5B00D8,#FF8DFF);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.btn-bD {
+    border: none;
+    cursor: pointer;
+    display: inline-block;
+    font-family: 'Bebas Neue Bold';font-weight: bold;font-size: 0.55em;color:white;
+    padding: 8px 25px 5px 25px;
+    margin: 40px 0 0 0;
+    background:rgb(43, 43, 43);
+    box-shadow: black 0 0 12px 0 inset;
+    border-radius: 7px;
+}
+
+.design-bD {
+    width: 65%;
+    height: 100%;
+    padding: 40px;
+    background: var(--gradient4-90);
+    border-radius: 40px 0 0 40px;
+    box-shadow: inset 0 0 12px 0 rgba(0, 0, 0, 0.2);
+    display: flex;
+    transition: all 500ms;
+    flex-direction: row;justify-content: space-between;align-items:center;flex-shrink: 0;font-size: 9.5vh;
+}
+
+.boxDb {
+    position: relative;
+    display: flex;
+    /* margin: 20px; */
+    /* background: #FF8DFF; */
+    /* width: auto; */
+}
+
+.headTxt {
+    transform: translateY(15%);
+    z-index: 1;
+    text-shadow: 0px 6px 12px rgba(0, 0, 0, 0.1);
+    font-family: 'Acumin-Pro';font-weight: bolder;font-size:148pt;font-size: 3em;color: white;
+}
+
+.subDesc {
+    display: flex;
+    margin-left: 20px;
+    position: relative;
+    left: -15%;
+    padding-left: 30px;
+    padding-right: 30px;
+    background: white;
+    border-radius: 20px;
+    width: 0.01px;
+    height: 42vh;
+    opacity: 0.01;
+    transform-origin: 50% 50%;
+    transition: all 300ms ease-in;
+    align-items: center;justify-content: flex-end;
+    font-family: Boltzz;font-size: 0.1pt;color: black;
+}
+
+.boxDb:hover .subDesc {
+    width: 17vw;
+    font-size: 0.5em;
+    opacity: 1;
+    box-shadow: var(--shadow-offset);
+}
+
+.boxDb:hover .headTxt {
+    color: black;
+}
+
+.footLogo {
+    width: 100vw;
+    min-height: 30px;
+    background: var(--gradient4-90);
+    display: flex;
+    justify-content: center;align-items: center;
+    font-family: 'Acumin-Pro';font-weight:bold;color: white;
+}
+
+.footImg {
+    width: 16pt;
+    margin: 0 5px 0 5px;
+}
+
+.footText {
+    font-family: 'Letrista Script';color: rgb(158, 0, 21);font-weight: normal;
+    margin: 0 5px 0 5px;
+}
+
+@keyframes scaleUp {
+    to {
+        transform: scale(1.1);
+    }
+}
+
+@media (max-width: 500px) {
+    .joint {
+        display: none;
+    }
+    .nav {
+        display: none
+    }
+    .logo-img {
+        margin: 3% auto 3% auto;
+        display: block;
+        width: 60%;
+    }
+    .mainTxt-bd {
+        font-size: 0.5em;
+    }
+    .bottomDeets {
+        flex-direction: column;
+        margin: 10vh 0 25vh 0;
+        height: auto;
+    }
+    .design-bD {
+        display: none;
+    }
+    .container {
+        height: 100vh;
+        position: relative;
+    }
+    .footLogo {
+        position: absolute;
+        bottom: 0%;
+    }
+}
+
+/* @media all and (min-width: 50px)   {  body  { font-size:0.1em;  } }
+@media all and (min-width: 100px)  {  body  { font-size:0.2em;  } }
+@media all and (min-width: 200px)  {  body  { font-size:0.4em;  } }
+@media all and (min-width: 300px)  {  body  { font-size:0.6em;  } }
+@media all and (min-width: 400px)  {  body  { font-size:0.8em;  } }
+@media all and (min-width: 500px)  {  body  { font-size:1.0em;  } }
+@media all and (min-width: 600px)  {  body  { font-size:1.2em;  } }
+@media all and (min-width: 700px)  {  body  { font-size:1.4em;  } }
+@media all and (min-width: 800px)  {  body  { font-size:1.6em;  } }
+@media all and (min-width: 900px)  {  body  { font-size:1.8em;  } }
+@media all and (min-width: 1000px) {  body  { font-size:2.0em;  } }
+@media all and (min-width: 1100px) {  body  { font-size:2.2em;  } }
+@media all and (min-width: 1200px) {  body  { font-size:2.4em;  } }
+@media all and (min-width: 1300px) {  body  { font-size:2.6em;  } }
+@media all and (min-width: 1400px) {  body  { font-size:2.8em;  } }
+@media all and (min-width: 1500px) {  body  { font-size:3.0em;  } }
+@media all and (min-width: 1500px) {  body  { font-size:3.2em;  } }
+@media all and (min-width: 1600px) {  body  { font-size:3.4em;  } }
+@media all and (min-width: 1700px) {  body  { font-size:3.6em;  } } */
