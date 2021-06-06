@@ -1,7 +1,7 @@
 .resume {
     width: 85%;
     height: auto;
-    padding-top: calc(2144 / 1516 * 100%);
+    padding-top: calc(297 / 210 * 86%);
     background: white;
     position: relative;
     margin-left: auto;
@@ -81,11 +81,11 @@ input:focus {
     top: 19.3%;
     width: 90%;
     height: 75.7%;
-    margin: 5%;
+    margin: 2% 4%;
 }
 
 .mfield {
-    margin: 1% 0 4%;
+    margin: 1% 0 3%;
 }
 
 .detail-field {
@@ -98,7 +98,7 @@ input:focus {
 }
 
 .header-c1 {
-    width: 25%;
+    width: 17%;
     margin: 3%;
 }
 
@@ -125,8 +125,8 @@ input:focus {
 }
 
 .header-c2 {
-    width: 85%;
-    margin: 3%;
+    width: 83%;
+    margin: 3% 4%;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -137,7 +137,6 @@ input:focus {
     font: 'Acumin-Pro';
     font-weight: bold;
     font-size: 3em;
-    transition: all 500ms;
     margin-bottom: 0%;
     position: relative;
     /* background: rgb(13, 255, 33); */
@@ -146,7 +145,6 @@ input:focus {
 .header-c2 .current {
     font: 'Arial';
     font-style: italic;
-    transition: all 500ms;
     margin: 2% 0;
     height: 10%;
     /* background: rgb(13, 255, 33); */
@@ -155,10 +153,7 @@ input:focus {
 .header-c2 .description {
     font: 'Arial';
     font-size: 1.1em;
-    transition: all 500ms;
-    height: auto;
-    max-height: 100%;
-    overflow-y: hidden;
+    height: max-content;
     /* background: rgb(13, 255, 33); */
 }
 
@@ -186,6 +181,7 @@ input:focus {
 
 .field-row {
     display: flex;
+    flex-wrap: wrap;
 }
 
 .field-column {
@@ -198,7 +194,7 @@ input:focus {
 .field-row-data {
     display: flex;
     flex-direction: column;
-    margin: 0.5% 3% 1% 0;
+    margin: 0.5% 3% 0 0;
     font-family: 'Acumin-Pro';
     font-weight: bolder;
     font-style: italic;
@@ -253,10 +249,7 @@ input:focus {
     display: flex;
     justify-content: space-between;
     font-weight: bold;
-    background: var(--background-gradient);
-    background-clip: text;
-    -webkit-background-clip: text;
-    color: transparent;
+    color: var(--font-color);
 }
 
 .field-place {
@@ -282,14 +275,31 @@ input:focus {
     font-weight: lighter;
     font-style: italic;
     text-align: end;
-    background: var(--background-gradient);
-    background-clip: text;
-    -webkit-background-clip: text;
-    color: transparent;
+    color: var(--gradient-end);
+}
+
+.dl-bar {
+    display: flex;
+    justify-content: center;
+    margin: 3%;
+}
+
+.dl-button {
+    margin: auto;
 }
 
 @media screen and (max-width:800px) {
     .resume {
         font-size: 10px;
+    }
+}
+
+@media print {
+    .resume {
+        font-size: 15px;
+    }
+
+    .dl-bar {
+        display: none;
     }
 }
