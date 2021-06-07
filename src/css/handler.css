@@ -12,9 +12,24 @@ body {
     overflow-x: hidden;
 }
 
+.title-h1 {
+    text-align: center;
+	font-family: 'Boltzz';
+    font-size: 4em;
+    margin-bottom: 35px;
+    margin-top: -35px;
+}
+
 .form-resume-container {
     display: flex;
     justify-content: center;
+    width: 87%;
+    background: rgb(255, 255, 255);
+    box-shadow: var(--shadow-offset);
+    justify-self: center;
+    padding: 10% 0;
+    margin: auto;
+    margin-bottom: 5%;
 }
 
 .input-tab {
@@ -33,21 +48,22 @@ body {
     border: none;
 }
 
-.accordion {
-    width: 70%;
+input[type=range] {
+    transform: translateY(10px);
 }
 
-.card-header {
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    background: rgb(240, 240, 240);
-    border: none;
-    outline: none;
+.accordion {
+    width: 75%;
+}
+
+
+.card {
+    margin: 10px;
+    border-radius: 10px;
 }
 
 .card-header>.btn {
-    width: 90%;
+    width: 87%;
     text-align: left;
     outline: none;
     border: none;
@@ -56,6 +72,25 @@ body {
 .btn:focus, .btn:active {
     outline: none !important;
     box-shadow: none;
+}
+
+input,textarea ,button{
+    margin: 10px;
+}
+
+input:focus, input:active {
+    outline: none !important;
+    border: none !important;
+    box-shadow: none;
+}
+
+.input-group-text {
+    height: 38px;
+    margin: 10px;
+}
+
+.dlbar {
+    margin: 10px;
 }
 
 .add-component {
@@ -72,7 +107,7 @@ body {
     position: relative;
 }
 
-.fa {
+.fa1,.fa2,.fa3 {
     display: none;    
     cursor: pointer;
     pointer-events: all;
@@ -80,11 +115,39 @@ body {
     z-index: 5;
 }
 
-.form-group:hover .delete-row {
+.delete-row {
+    position: absolute;
+    opacity: 0.4;
+    top: 1%;
+    right: -4%;
+    transition: all 250ms;
+}
+
+.form-group:hover .delete-row:not(:hover) {
     position: absolute;
     top: 1%;
     right: -4%;
     z-index: 5;
+    transition: all 250ms;
+    opacity: 0.4;
+}
+
+.init .fa {
+    width: 5px;
+}
+
+
+
+.form-group:hover .delete-row:hover {
+    position: absolute;
+    opacity: 1;
+    top: 1%;
+    right: -4%;
+    z-index: 5;
+}
+
+.form-check {
+    margin: auto;
 }
 
 .row-line {
@@ -92,9 +155,10 @@ body {
     display: flex;
     right: 0% !important; 
     top: 0% !important;
+    margin: 10px;
 }
 
-.row-line .fa {
+.row-line .fa1,.row-line .fa2,.row-line .fa3 {
     display: flex !important;
     background: var(--alert-color);
     width: 40px;
@@ -105,7 +169,7 @@ body {
     align-items: center;
 }
 
-.form-group:hover .fa {
+.form-group:hover .fa1,.form-group:hover .fa2,.form-group:hover .fa3 {
     background: var(--alert-color);
     width: 40px;
     height: 40px;;
@@ -113,6 +177,10 @@ body {
     color: white;
     justify-content: center;
     align-items: center;
+}
+
+.fa1:hover,.fa2:hover,.fa3:hover {
+    background-color: var(--hot-color) !important;
 }
 
 .fa1 {

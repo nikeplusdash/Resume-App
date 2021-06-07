@@ -199,33 +199,16 @@ input:focus {
     background: var(--background-gradient);
 }
 
+.progress-bar {
+    background-color: var(--font-color);
+}
+
 .pbar {
     margin: 0px 30px;
     border: none;
     width: 55%;
     margin-top: 7px;
     height: 7px;
-    background: transparent;
-}
-
-.pbar::-moz-progress-value {
-    border-radius: 20px;
-    background: var(--gradient-end);
-}
-
-.pbar::-moz-progress-bar {
-    border-radius: 20px;
-    background: white
-}
-
-.pbar::-webkit-progress-value {
-    border-radius: 20px;
-    background: var(--gradient-end);
-}
-
-.pbar::-webkit-progress-bar {
-    border-radius: 20px;
-    background: white
 }
 
 .progress-name {
@@ -293,7 +276,6 @@ input:focus {
     .resume {
         font-size: 15px;
     }
-
     .dl-bar {
         display: none;
     }

@@ -1,10 +1,15 @@
-import React, { useEffect, useRef, useState } from "react"
+import React, { useRef, useState } from "react"
 import { Link } from 'react-router-dom'
 import { Accordion, Card, Button, FormControl, InputGroup, FormGroup, Form, Dropdown, DropdownButton } from 'react-bootstrap'
+import RangeSlider from 'react-bootstrap-range-slider';
 import { v4 as uuidv4 } from 'uuid';
+import axios from "axios"
+import { deleteSession, emptyStructure, getUser } from '../Components/utils'
 import '../css/handler.css'
-import { dataStructure, dummyUserData } from '../Components/utils'
-// import 'bootstrap/dist/css/bootstrap.min.css';
+
+let highlightList = ['github', 'instagram', 'link', 'envelope', 'phone', 'facebook', 'reddit', 'linkedin']
+let highlightNames = { 'github': 'GitHub', 'instagram': 'Instagram', 'link': 'URL', 'envelope': 'E-Mail', 'phone': 'Phone', 'facebook': 'Facebook', 'reddit': 'Reddit', 'linkedin': 'LinkedIn' }
+let displayOrder = ['education', 'experience', 'organization', 'languages', 'skills', 'interests']
 
 function Education(props) {
     let [info, setInfo] = useState(props.info)
@@ -160,7 +165,7 @@ function Experience(props) {
                     }}
                 />
             </InputGroup>
-            <InputGroup className="mb-3">                
+            <InputGroup className="mb-3">
                 <FormControl
                     placeholder="Enter your referals"
                     defaultValue={info.referal}
@@ -257,15 +262,21 @@ function Languages(props) {
                         setInfo({ ...info, name: e.target.value })
                     }}
                 />
-                <FormControl
-                    placeholder="Proficiency"
-                    aria-label="Proficiency"
-                    aria-describedby="basic-addon1"
-                    defaultValue={info.proficiency}
-                    onChange={e => {
-                        setInfo({ ...info, proficiency: e.target.value })
-                    }}
-                />
+                <Form.Group>
+                    <FormControl
+                        type="range"
+                        placeholder="Proficiency"
+                        aria-label="Proficiency"
+                        variant="primary"
+                        aria-describedby="basic-addon1"
+                        value={info.proficiency * 100}
+                        max={100}
+                        onChange={e => {
+                            console.log(e.target.value / 100)
+                            setInfo({ ...info, proficiency: e.target.value / 100 })
+                        }}
+                    />
+                </Form.Group>
                 <div className="delete-row row-line" >
                     <i className="fa fa1 fa-chevron-up" onClick={e => { e.preventDefault(); props.order("languages", 0, info.id) }} />
                     <i className="fa fa2 fa-trash" onClick={e => { e.preventDefault(); props.delete("languages", info.id) }} />
@@ -326,24 +337,106 @@ function Interests(props) {
     )
 }
 
+function Highlight(props) {
+    let [info, setInfo] = useState(props.info)
+    return (
+        <FormGroup onBlur={e => props.update("highlight", info)}>
+            <InputGroup className="mb-3">
+                <InputGroup.Prepend>
+                    <InputGroup.Text id="basic-addon1"><i className={"fa fa-" + info.type}></i></InputGroup.Text>
+                </InputGroup.Prepend>
+                <FormControl
+                    placeholder={info.type}
+                    aria-label="Enter Highlights"
+                    aria-describedby="basic-addon1"
+                    defaultValue={info.data}
+                    onChange={e => {
+                        setInfo({ ...info, data: e.target.value })
+                    }}
+                />
+                <div className="delete-row row-line" >
+                    <i className="fa fa1 fa-chevron-up" onClick={e => { e.preventDefault(); props.order("highlight", 0, info.id) }} />
+                    <i className="fa fa2 fa-trash" onClick={e => { e.preventDefault(); props.delete("highlight", info.id) }} />
+                    <i className="fa fa3 fa-chevron-down" onClick={e => { e.preventDefault(); props.order("highlight", 1, info.id) }} />
+                </div>
+            </InputGroup>
+        </FormGroup>
+    )
+}
+
 class ResumeHandler extends React.Component {
     constructor(props) {
         super(props)
-        // let userdata = JSON.parse(localStorage.getItem("data"))
-        let userdata = dummyUserData
+        const api = process.env.REACT_APP_API + '/api/data'
         this.state = {
-            ...userdata,
+            ...emptyStructure,
             loading: false,
         }
+        let token = getUser()
+        let options = {
+            method: 'POST',
+            headers: {
+                'Authorization': token.accessToken,
+                'G-Auth': localStorage.getItem("google"),
+            }
+        }
+        axios(api + '/fetch', options).then((res) => {
+            console.log(res.data)
+            this.setState(res.data)
+        }).catch(err => {
+
+        })
+        this.addContent = this.addContent.bind(this)
         this.addRow = this.addRow.bind(this)
         this.deleteRow = this.deleteRow.bind(this)
         this.moveUpDown = this.moveUpDown.bind(this)
         this.setStateArray = this.setStateArray.bind(this)
+        this.handleSave = this.handleSave.bind(this)
+    }
+
+    handleSave() {
+        const api = process.env.REACT_APP_API + '/api/data'
+        let token = getUser()
+        let options = {
+            method: 'POST',
+            headers: {
+                'Authorization': token.accessToken,
+                'G-Auth': localStorage.getItem("google"),
+            },
+            data: {
+                content: this.state
+            }
+        }
+        axios(api + '/save', options).then((res) => {
+            // let status = res.data.code
+            console.log(res)
+        }).catch(err => { })
+    }
+
+    handleSubmit = () => {
+        let list = Object.keys(this.state).filter(i => this.state[i].length !== 0)
+        let data = {}
+        data.display = []
+        list.map(index => data[index] = this.state[index])
+        displayOrder.map(value => {
+            if (list.indexOf(value) != -1) data.display.push(value)
+        })
+        console.log(data)
+        return data
+    }
+
+    addContent(type) {
+        let doc = {
+            id: uuidv4(),
+            type: type,
+            data: ""
+        }
+        this.setState({ highlight: this.state.highlight.concat(doc) })
     }
 
     addRow(event, index) {
         event.preventDefault()
-        this.setState({ [index]: this.state[index].concat({ ...dataStructure[index], id: uuidv4() }) })
+        this.setState({ [index]: this.state[index].concat({ id: uuidv4() }) })
     }
 
     deleteRow(type, value) {
@@ -354,7 +447,6 @@ class ResumeHandler extends React.Component {
     setStateArray(type, value) {
         console.log(this.state)
         this.setState({ [type]: this.state[type].map(itr => (itr.id === value.id ? { ...value } : itr)) })
-        // localStorage.setItem("data", JSON.stringify(this.state))
     }
 
     moveUpDown(type, direction, value) {
@@ -374,18 +466,19 @@ class ResumeHandler extends React.Component {
         return (
             <>
                 <div className="nav">
-                    <Link to={{ pathname: '/logout' }}><div className="wrap-nobg"><div className="i1">Logout</div></div></Link>
+                    <Link to={{ pathname: '/Login' }}><div className="wrap-nobg"><div className="i1" onClick={e => { deleteSession() }}>Logout</div></div></Link>
                 </div>
                 <div className="form-resume-container">
                     <Accordion>
                         <form className="form-resume" onSubmit={e => e.preventDefault()}>
-                        <Card>
+                            <h1 className="title-h1">Create your Resume</h1>
+                            <Card>
                                 <Card.Header>
-                                    <Accordion.Toggle as={Button} variant="" eventKey="20">
+                                    <Accordion.Toggle as={Button} variant="" eventKey="1">
                                         <span className="component-title">Basic Information</span>
                                     </Accordion.Toggle>
                                 </Card.Header>
-                                <Accordion.Collapse eventKey="20">
+                                <Accordion.Collapse eventKey="1">
                                     <Card.Body>
                                         <FormGroup>
                                             <InputGroup>
@@ -424,12 +517,12 @@ class ResumeHandler extends React.Component {
                             </Card>
                             <Card>
                                 <Card.Header>
-                                    <Accordion.Toggle as={Button} variant="" eventKey="0">
+                                    <Accordion.Toggle as={Button} variant="" eventKey="2">
                                         <span className="component-title">Education</span>
                                     </Accordion.Toggle>
                                     <button className="add-component" onMouseDown={e => this.addRow(e, "education")}>+</button>
                                 </Card.Header>
-                                <Accordion.Collapse eventKey="0">
+                                <Accordion.Collapse eventKey="2">
                                     <Card.Body>
                                         {this.state.education.map(item => <Education key={item.id} update={this.setStateArray} delete={this.deleteRow} order={this.moveUpDown} info={item} />)}
                                     </Card.Body>
@@ -437,12 +530,12 @@ class ResumeHandler extends React.Component {
                             </Card>
                             <Card>
                                 <Card.Header>
-                                    <Accordion.Toggle as={Button} variant="" eventKey="1">
+                                    <Accordion.Toggle as={Button} variant="" eventKey="3">
                                         <span className="component-title">Experience</span>
                                     </Accordion.Toggle>
                                     <button className="add-component" onMouseDown={e => this.addRow(e, "experience")}>+</button>
                                 </Card.Header>
-                                <Accordion.Collapse eventKey="1">
+                                <Accordion.Collapse eventKey="3">
                                     <Card.Body>
                                         {this.state.experience.map(item => <Experience key={item.id} update={this.setStateArray} delete={this.deleteRow} order={this.moveUpDown} info={item} />)}
                                     </Card.Body>
@@ -450,12 +543,12 @@ class ResumeHandler extends React.Component {
                             </Card>
                             <Card>
                                 <Card.Header>
-                                    <Accordion.Toggle as={Button} variant="" eventKey="2">
+                                    <Accordion.Toggle as={Button} variant="" eventKey="4">
                                         <span className="component-title">Organizations</span>
                                     </Accordion.Toggle>
                                     <button className="add-component" onMouseDown={e => this.addRow(e, "organization")}>+</button>
                                 </Card.Header>
-                                <Accordion.Collapse eventKey="2">
+                                <Accordion.Collapse eventKey="4">
                                     <Card.Body>
                                         {this.state.organization.map(item => <Organization key={item.id} update={this.setStateArray} delete={this.deleteRow} order={this.moveUpDown} info={item} />)}
                                     </Card.Body>
@@ -463,12 +556,12 @@ class ResumeHandler extends React.Component {
                             </Card>
                             <Card>
                                 <Card.Header>
-                                    <Accordion.Toggle as={Button} variant="" eventKey="3">
+                                    <Accordion.Toggle as={Button} variant="" eventKey="5">
                                         <span className="component-title">Languages</span>
                                     </Accordion.Toggle>
                                     <button className="add-component" onMouseDown={e => this.addRow(e, "languages")}>+</button>
                                 </Card.Header>
-                                <Accordion.Collapse eventKey="3">
+                                <Accordion.Collapse eventKey="5">
                                     <Card.Body>
                                         {this.state.languages.map(item => <Languages key={item.id} update={this.setStateArray} delete={this.deleteRow} order={this.moveUpDown} info={item} />)}
                                     </Card.Body>
@@ -476,12 +569,12 @@ class ResumeHandler extends React.Component {
                             </Card>
                             <Card>
                                 <Card.Header>
-                                    <Accordion.Toggle as={Button} variant="" eventKey="4">
+                                    <Accordion.Toggle as={Button} variant="" eventKey="6">
                                         <span className="component-title">Skills</span>
                                     </Accordion.Toggle>
                                     <button className="add-component" onMouseDown={e => this.addRow(e, "skills")}>+</button>
                                 </Card.Header>
-                                <Accordion.Collapse eventKey="4">
+                                <Accordion.Collapse eventKey="6">
                                     <Card.Body>
                                         {this.state.skills.map(item => <Skills key={item.id} update={this.setStateArray} delete={this.deleteRow} order={this.moveUpDown} info={item} />)}
                                     </Card.Body>
@@ -489,17 +582,53 @@ class ResumeHandler extends React.Component {
                             </Card>
                             <Card>
                                 <Card.Header>
-                                    <Accordion.Toggle as={Button} variant="" eventKey="5">
+                                    <Accordion.Toggle as={Button} variant="" eventKey="7">
                                         <span className="component-title">Interests</span>
                                     </Accordion.Toggle>
                                     <button className="add-component" onMouseDown={e => this.addRow(e, "interests")}>+</button>
                                 </Card.Header>
-                                <Accordion.Collapse eventKey="5">
+                                <Accordion.Collapse eventKey="7">
                                     <Card.Body>
                                         {this.state.interests.map(item => <Interests key={item.id} update={this.setStateArray} delete={this.deleteRow} order={this.moveUpDown} info={item} />)}
                                     </Card.Body>
                                 </Accordion.Collapse>
                             </Card>
+                            <Card>
+                                <Card.Header>
+                                    <Accordion.Toggle as={Button} variant="" eventKey="8">
+                                        <span className="component-title">Highlight</span>
+                                    </Accordion.Toggle>
+                                </Card.Header>
+                                <Accordion.Collapse eventKey="8">
+                                    <Card.Body>
+                                        <DropdownButton
+                                            variant="outline-secondary"
+                                            title="Highlight Option"
+                                            id="input-group-dropdown-1"
+                                            disabled={this.state.highlight.length >= 4}
+                                            onSelect={e => this.addContent(e)} >
+                                            {
+                                                highlightList.filter(itr => this.state.highlight.findIndex(i => i.type === itr) === -1).map(itr => {
+                                                    return (
+                                                        <Dropdown.Item eventKey={itr}>{highlightNames[itr]}</Dropdown.Item>
+                                                    )
+                                                })
+                                            }
+                                        </DropdownButton>
+                                        {this.state.highlight.map(item => <Highlight key={item.id} update={this.setStateArray} delete={this.deleteRow} order={this.moveUpDown} info={item} />)}
+                                    </Card.Body>
+                                </Accordion.Collapse>
+                            </Card>
+                            <div className="dlbar">
+                                <Link to={{
+                                    referrer: "handler",
+                                    pathname: "/resume",
+                                    data: this.handleSubmit()
+                                }}>
+                                    <Button variant="outline-secondary">See Resume</Button>
+                                </Link>
+                                <Button variant="outline-info" onClick={e => { e.preventDefault(); this.handleSave() }}>Save</Button>
+                            </div>
                         </form>
                     </Accordion>
                 </div>

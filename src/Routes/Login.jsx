@@ -32,6 +32,7 @@ function Login() {
         }
         axios(api + '/login', options).then((res) => {
             setLoading(false)
+            localStorage.setItem("google",false)
             setUser(res.data)
             history.replace('/ResumeHandler')
         }).catch(err => {
@@ -133,6 +134,7 @@ function Register() {
         axios(api + '/register', options)
             .then(res => {
                 setUser(res.data)
+                localStorage.setItem("google",false)
                 setLoading(false)
                 history.replace('/ResumeHandler')
             })

@@ -17,8 +17,6 @@ function App() {
 				<PrivateRoute exact path="/dashboard" component={Dashboard} />
 				<PrivateRoute path="/resume" component={Resume} />
 				<PrivateRoute path="/resumehandler" component={ResumeHandler} />
-				{/* <PrivateRoute exact path="/settings" component={Settings} />
-				<PrivateRoute exact path="/logout" component={Logout} /> */}
 				<Redirect to="/UhOh" />
 			</Switch>
 		</BrowserRouter>

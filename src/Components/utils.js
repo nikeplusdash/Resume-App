@@ -73,24 +73,26 @@ export const DesignPalette = {
     }
 }
 
-export const dataStructure = {
-    education: {
-        id: 0,
-        place: "",
-        desc: "",
-        scale: "",
-        marks: "",
-        from: "",
-        to: "",
-        isCurrent: false
-    }
+export const emptyStructure = {
+    image: { display: false },
+    name: "",
+    current: "",
+    theme: 2,
+    description: "",
+    highlight: [],
+    education: [],
+    experience: [],
+    organization: [],
+    languages: [],
+    skills: [],
+    interests: []
 }
 
 export const dummyUserData = {
     name: "Rick Astley",
     current: "Artist",
+    theme: 2,
     image: {
-        shape: 0,
         data: "",
         display: false
     },
@@ -230,8 +232,5 @@ export const dummyUserData = {
         name: "Sleep"
     }
     ],
-    display: {
-        highlight: ["phone", "instagram", "envelope"],
-        main: ["education", "experience", "interests", "languages", "skills"]
-    }
+    display: ["education", "experience", "interests", "languages", "skills"]
 }

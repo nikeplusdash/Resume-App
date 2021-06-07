@@ -10,6 +10,7 @@
     flex-direction: row;
     justify-content: space-between;
     box-shadow: var(--shadow-offset);
+    margin: 20px;
 }
 
 .theme {
@@ -92,6 +93,7 @@
     /* font-weight: bold; */
     font-size: 10pt;
     user-select: none;
+    text-align: center;
 }
 
 @keyframes bubble {
