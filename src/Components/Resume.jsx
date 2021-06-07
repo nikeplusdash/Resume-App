@@ -9,10 +9,39 @@ import 'font-awesome/css/font-awesome.min.css';
 class Resume extends React.Component {
     constructor(props) {
         super(props)
-        this.state = dummyUserData
+        this.state = { ...((props.referrer === 'home') ? dummyUserData : dummyUserData), theme: props.themeVal }
         this.generateChildren = this.generateChildren.bind(this)
         this.target = createRef()
+    }
 
+    componentDidUpdate(prevProps) {
+        if (prevProps.themeVal !== this.props.themeVal) {
+            this.setState({ theme: this.props.themeVal });
+            console.log(this.props.themeVal)
+            switch (this.props.themeVal) {
+                case "1":
+                    document.querySelector(":root").style.setProperty("--gradient-start", "#FF0C0C");
+                    document.querySelector(":root").style.setProperty("--gradient-end", "#FF9DC1");
+                    document.querySelector(":root").style.setProperty("--font-color", "#FF0C0C");
+                    document.querySelector(":root").style.setProperty("--special-font-color", "#FFFFFF");
+                    document.querySelector(":root").style.setProperty("--background-gradient", "var(--gradient1-90)");
+                    break
+                case "2":
+                    document.querySelector(":root").style.setProperty("--gradient-start", "#8E40FF");
+                    document.querySelector(":root").style.setProperty("--gradient-end", "#00BAFF");
+                    document.querySelector(":root").style.setProperty("--font-color", "#8547FF");
+                    document.querySelector(":root").style.setProperty("--special-font-color", "#FFFFFF");
+                    document.querySelector(":root").style.setProperty("--background-gradient", "var(--gradient2-90)");
+                    break
+                case "3":
+                    document.querySelector(":root").style.setProperty("--gradient-start", "#6FFFD8");
+                    document.querySelector(":root").style.setProperty("--gradient-end", "#D5FFA3");
+                    document.querySelector(":root").style.setProperty("--font-color", "#6FFFD8");
+                    document.querySelector(":root").style.setProperty("--special-font-color", "#000000");
+                    document.querySelector(":root").style.setProperty("--background-gradient", "var(--gradient6-90)");
+                    break
+            }
+        }
     }
 
     options = {
@@ -164,7 +193,7 @@ class Resume extends React.Component {
                             <div className="description">{this.state.description}</div>
                         </div>
                     </div>
-                    <div className="highlight">
+                    <div className="highlight" >
                         {
                             this.state.display.highlight.map((highlightField) => {
                                 let field = this.state.highlight.filter(field => field.type === highlightField)[0]
@@ -186,13 +215,15 @@ class Resume extends React.Component {
                         }
                     </div>
                 </div>
-                <div className="dl-bar">
-                    <Pdf targetRef={this.target} filename="div-blue.pdf" options={this.options} x={0} y={0} scale={0.82}>
-                        {({ toPdf }) => (
-                            <Button className="dl-button" onClick={toPdf}>Generate pdf</Button>
-                        )}
-                    </Pdf>
-                </div>
+                {this.props.referrer === 'home' ? null : (
+                    <div className="dl-bar">
+                        <Pdf targetRef={this.target} filename="div-blue.pdf" options={this.options} x={0} y={0} scale={0.82}>
+                            {({ toPdf }) => (
+                                <Button className="dl-button" onClick={toPdf}>Generate pdf</Button>
+                            )}
+                        </Pdf>
+                    </div>
+                )}
             </>
         )
     }

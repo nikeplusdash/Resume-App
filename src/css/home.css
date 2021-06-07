@@ -44,11 +44,15 @@ body {
     width: 100vw;
 }
 
+.center-text {
+    text-align: center;
+}
+
 .joint {
     display: block;
     margin: auto;
     position: relative;
-    text-align: center;
+    /* text-align: center; */
 }
 
 .text-j {

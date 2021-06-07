@@ -33,7 +33,7 @@ function Login() {
         axios(api + '/login', options).then((res) => {
             setLoading(false)
             setUser(res.data)
-            history.replace('/Dashboard')
+            history.replace('/ResumeHandler')
         }).catch(err => {
             console.log(err.response)
             let errorSrc = err.response.data.code
@@ -58,7 +58,7 @@ function Login() {
             setUser(res.data)
             setLoading(false)
             console.log(res)
-            history.replace('/Dashboard')
+            history.replace('/ResumeHandler')
         })).catch(err => localStorage.removeItem("user"))
     }
     const handleFailure = gData => {
@@ -134,7 +134,7 @@ function Register() {
             .then(res => {
                 setUser(res.data)
                 setLoading(false)
-                history.replace('/Dashboard')
+                history.replace('/ResumeHandler')
             })
             .catch(err => {
                 console.log(err.message)
@@ -233,7 +233,7 @@ function Register() {
                 axios(api + '/login', options).then((res) => {
                     setUser(res.data)
                     setLoading(false)
-                    history.replace('/Dashboard')
+                    history.replace('/ResumeHandler')
                 })
             }
         })

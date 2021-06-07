@@ -128,6 +128,11 @@
 	--enabled-color: #808080;
 	--disabled-color: #D1D1D1;
 	--shadow-offset: 0 4px 8px 0 #00000012;
+	--gradient-start: #8E40FF;
+    --gradient-end: #00BAFF;
+    --font-color: #8547FF;
+    --special-font-color: #FFFFFF;
+    --background-gradient: var(--gradient2-90)
 }
 
 body {

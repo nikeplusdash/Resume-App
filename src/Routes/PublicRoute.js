@@ -22,7 +22,7 @@ class PublicRoute extends React.Component {
         }
         else return (
             <Route {...rest} render={props =>
-                this.state.isAuthenticated?<Redirect to={{ pathname:'/Dashboard' }} />:<Component {...this.props} />
+                this.state.isAuthenticated?<Redirect to={{ pathname:'/ResumeHandler' }} />:<Component {...this.props} />
             }
             />
         )
