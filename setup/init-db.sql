@@ -18,7 +18,7 @@ CREATE TABLE cvresume (
 
 CREATE TABLE otp (
     id uuid PRIMARY KEY,
-    email_id TEXT REFERENCES client(id),
+    email_id TEXT,
     expiry DATE,
     otp CHAR(6)
 );
