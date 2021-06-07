@@ -149,7 +149,7 @@ class Resume extends React.Component {
                     <div className="interests mfield">
                         <h1>Interests</h1>
                         <div className="field-row">
-                            {information.map(field => <div className="field-row-data">{field}</div>)}
+                            {information.map(field => <div className="field-row-data">{field.name}</div>)}
                         </div>
                     </div>
                 )
@@ -159,7 +159,7 @@ class Resume extends React.Component {
                     <div className="languages mfield">
                         <h1>Languages</h1>
                         <div className="field-column">
-                            {information.items.map(field => <div className="progress-row-data"><div className="progress-name">{field.name}</div><ProgressBar className="pbar" now={field.proficiency * 100}></ProgressBar></div>)}
+                            {information.map(field => <div className="progress-row-data"><div className="progress-name">{field.name}</div><ProgressBar className="pbar" now={field.proficiency * 100}></ProgressBar></div>)}
                         </div>
                     </div>
                 )
@@ -168,7 +168,7 @@ class Resume extends React.Component {
                     <div className="skills mfield">
                         <h1>Skills</h1>
                         <div className="field-row">
-                            {information.map(field => <div className="field-row-data">{field}</div>)}
+                            {information.map(field => <div className="field-row-data">{field.name}</div>)}
                         </div>
                     </div>
                 )
@@ -199,7 +199,7 @@ class Resume extends React.Component {
                                 let field = this.state.highlight.filter(field => field.type === highlightField)[0]
                                 return (
                                     <div className="highlight-field" key={field.type}>
-                                        <div className={"highlight-field-c1 fa fa-" + field.type}></div>
+                                        <i className={"highlight-field-c1 fa fa-" + field.type}></i>
                                         <div className="highlight-field-c2">{field.data}</div>
                                     </div>
                                 )

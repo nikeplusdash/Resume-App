@@ -72,24 +72,69 @@ body {
     position: relative;
 }
 
-.delete-row {
-    display: none;
+.fa {
+    display: none;    
     cursor: pointer;
     pointer-events: all;
     transition: all 1050ms;
     z-index: 5;
 }
 
-.form-group:hover > .delete-row {
+.form-group:hover .delete-row {
     position: absolute;
-    top: 50%;
-    right: -3%;
+    top: 1%;
+    right: -4%;
+    z-index: 5;
+}
+
+.row-line {
+    position: relative !important;
+    display: flex;
+    right: 0% !important; 
+    top: 0% !important;
+}
+
+.row-line .fa {
+    display: flex !important;
     background: var(--alert-color);
     width: 40px;
-    height: 40px;
-    border-radius: 20px;
+    height: 40px;;
     display: flex;
     color: white;
     justify-content: center;
     align-items: center;
+}
+
+.form-group:hover .fa {
+    background: var(--alert-color);
+    width: 40px;
+    height: 40px;;
+    display: flex;
+    color: white;
+    justify-content: center;
+    align-items: center;
+}
+
+.fa1 {
+    border-radius: 10px 10px 0 0;
+}
+
+.fa2 {
+    border-radius: 0;
+}
+
+.fa3 {
+    border-radius: 0 0 10px 10px
+}
+
+.row-line .fa1 {
+    border-radius: 10px 0px 0 10px;
+}
+
+.row-line .fa2 {
+    border-radius: 0;
+}
+
+.row-line .fa3 {
+    border-radius: 0 10px 10px 0;
 }

@@ -159,37 +159,77 @@ export const dummyUserData = {
             isCurrent: false
         }
     ],
-    languages: {
-        scale: 10,
-        items: [{
-            id: "0",
-            name: "English",
-            proficiency: 0.9,
+    organization: [
+        {
+            id: "30",
+            name: "Lorem Ipsum",
+            desc: "Under the tutelage of the production team of Mike Stock, Matt Aitken and Pete Waterman, known as Stock Aitken Waterman (SAW), Astley was taught about the recording process and groomed for his future career, supposedly starting off as the recording studio 'tea boy'.",
+            from: "2019",
+            to: "2021",
+            isCurrent: false
         },
         {
-            id: "1",
-            name: "Hindi",
-            proficiency: 1,
-        },
-        {
-            id: "2",
-            name: "Urdu",
-            proficiency: 0.5,
-        },
-        {
-            id: "3",
-            name: "French",
-            proficiency: 0.7,
-        },
-        {
-            id: "4",
-            name: "Chinese",
-            proficiency: 0.2,
+            id: "31",
+            name: "Lorem Ipsum",
+            desc: "Under the tutelage of the production team of Mike Stock, Matt Aitken and Pete Waterman, known as Stock Aitken Waterman (SAW), Astley was taught about the recording process and groomed for his future career, supposedly starting off as the recording studio 'tea boy'.",
+            from: "2019",
+            to: "2021",
+            isCurrent: false
         }
-        ]
+    ],
+    languages: [{
+        id: "0",
+        name: "English",
+        proficiency: 0.9
     },
-    skills: ["Listening", "Speaking", "Analysing"],
-    interests: ["Playing", "Reading", "Singing", "Playing", "Reading", "Singing", "Playing", "Reading", "Singing", "Playing", "Reading", "Singing"],
+    {
+        id: "1",
+        name: "Hindi",
+        proficiency: 1
+    },
+    {
+        id: "2",
+        name: "Urdu",
+        proficiency: 0.5
+    },
+    {
+        id: "3",
+        name: "French",
+        proficiency: 0.7
+    },
+    {
+        id: "4",
+        name: "Chinese",
+        proficiency: 0.2
+    }
+    ],
+    skills: [{
+
+        id: "40",
+        name: "Listening"
+    },
+    {
+        id: "41",
+        name: "Speaking"
+    },
+    {
+        id: "42",
+        name: "Analysing"
+    }
+    ],
+    interests: [{
+        id: "50",
+        name: "Football"
+    },
+    {
+        id: "51",
+        name: "Music"
+    },
+    {
+        id: "52",
+        name: "Sleep"
+    }
+    ],
     display: {
         highlight: ["phone", "instagram", "envelope"],
         main: ["education", "experience", "interests", "languages", "skills"]
